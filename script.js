@@ -1,7 +1,7 @@
 (function(){
   var slide2Fix = document.createElement('link');
   slide2Fix.rel = 'stylesheet';
-  slide2Fix.href = 'slide2-fix.css?v=20260912f';
+  slide2Fix.href = 'slide2-fix.css?v=20260913-final2';
   document.head.appendChild(slide2Fix);
 
   /* Slide 2 content upgrade: use real DOM text so it can be selected/copied, and add sourced MRI imagery. */
