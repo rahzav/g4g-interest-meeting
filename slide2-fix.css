@@ -1,9 +1,11 @@
-/* Slide 2 — stat-forward disease overview, no image */
+/* Slide 2 — stat-forward disease overview + treatment burden */
 #s2{
   justify-content:center!important;
   align-items:flex-start!important;
   padding:clamp(2rem,5.5vw,5.5rem) clamp(3.2rem,5.6vw,6rem)!important;
-  background:#000!important;
+  background:
+    radial-gradient(circle at 81% 48%,rgba(200,16,46,.055),transparent 27%),
+    #000!important;
 }
 
 #s2::before,#s2::after{display:none!important;content:none!important;}
@@ -112,7 +114,7 @@
 
 #s2 .gap-line,#s2 .cite,#s2 .cite::after{display:none!important;content:none!important;}
 
-/* Remove every image/visual container from prior iterations. */
+/* Keep all previous image experiments completely removed. */
 #s2 .s2-visual,
 #s2 .s2-visual::before,
 #s2 .s2-visual::after,
@@ -122,21 +124,147 @@
   opacity:0!important;
   width:0!important;
   height:0!important;
-  min-width:0!important;
-  min-height:0!important;
-  max-width:0!important;
-  max-height:0!important;
   margin:0!important;
   padding:0!important;
   border:0!important;
-  box-shadow:none!important;
   content:none!important;
 }
 
+/* Right side — animated treatment burden accumulator. */
+#s2 .treatment-burden{
+  position:absolute;
+  right:clamp(3.4rem,5.2vw,6rem);
+  top:50%;
+  width:min(39vw,650px);
+  transform:translateY(-48%);
+  color:#fff;
+  z-index:3;
+  pointer-events:none;
+}
+
+#s2 .burden-kicker{
+  font-family:var(--sans);
+  font-size:clamp(.72rem,.85vw,.88rem);
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--scarlet);
+  margin-bottom:.55rem;
+  opacity:0;
+  transform:translateY(10px);
+}
+
+#s2 .burden-title{
+  font-family:Helvetica,Arial,var(--sans);
+  font-size:clamp(2rem,3.25vw,3.7rem);
+  font-weight:760;
+  line-height:.98;
+  letter-spacing:-.045em;
+  color:#f5f4f1;
+  margin-bottom:clamp(1.5rem,2.5vw,2.1rem);
+  opacity:0;
+  transform:translateY(16px);
+}
+
+#s2 .burden-list{
+  position:relative;
+  padding-left:1.05rem;
+  border-left:1px solid rgba(255,255,255,.11);
+}
+
+#s2 .burden-row{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+  min-height:clamp(2.6rem,3.4vw,3.4rem);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  opacity:0;
+  transform:translateX(18px);
+}
+
+#s2 .burden-plus{
+  width:1.25rem;
+  flex:0 0 1.25rem;
+  font-family:var(--sans);
+  font-size:1.2rem;
+  font-weight:700;
+  color:var(--scarlet);
+  text-align:center;
+}
+
+#s2 .burden-label{
+  font-family:var(--sans);
+  font-size:clamp(.94rem,1.12vw,1.08rem);
+  font-weight:560;
+  letter-spacing:.005em;
+  color:#c8c5c1;
+}
+
+#s2 .burden-total{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:1.5rem;
+  margin-top:clamp(1.5rem,2.4vw,2rem);
+  padding-top:clamp(1.1rem,1.8vw,1.5rem);
+  border-top:1px solid rgba(200,16,46,.42);
+  opacity:0;
+  transform:translateY(18px);
+}
+
+#s2 .burden-total-number{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(3.5rem,5.8vw,6rem);
+  font-weight:700;
+  line-height:.82;
+  letter-spacing:-.055em;
+  color:#fff;
+  white-space:nowrap;
+}
+
+#s2 .burden-total-copy{
+  max-width:11rem;
+  padding-bottom:.18rem;
+  font-family:var(--sans);
+  font-size:clamp(.72rem,.88vw,.9rem);
+  line-height:1.35;
+  color:#8f8c88;
+  text-align:right;
+}
+
+#s2 .burden-context{
+  margin-top:.7rem;
+  font-family:var(--sans);
+  font-size:.68rem;
+  letter-spacing:.05em;
+  color:#55524f;
+  opacity:0;
+}
+
+#s2.active .burden-kicker{animation:burdenIn 560ms cubic-bezier(.2,.8,.2,1) 260ms forwards;}
+#s2.active .burden-title{animation:burdenIn 650ms cubic-bezier(.16,1,.3,1) 360ms forwards;}
+#s2.active .burden-row:nth-child(1){animation:burdenRowIn 520ms cubic-bezier(.2,.8,.2,1) 620ms forwards;}
+#s2.active .burden-row:nth-child(2){animation:burdenRowIn 520ms cubic-bezier(.2,.8,.2,1) 760ms forwards;}
+#s2.active .burden-row:nth-child(3){animation:burdenRowIn 520ms cubic-bezier(.2,.8,.2,1) 900ms forwards;}
+#s2.active .burden-row:nth-child(4){animation:burdenRowIn 520ms cubic-bezier(.2,.8,.2,1) 1040ms forwards;}
+#s2.active .burden-total{animation:burdenIn 700ms cubic-bezier(.16,1,.3,1) 1230ms forwards;}
+#s2.active .burden-context{animation:burdenFade 500ms ease 1550ms forwards;}
+
+@keyframes burdenIn{to{opacity:1;transform:translateY(0);}}
+@keyframes burdenRowIn{to{opacity:1;transform:translateX(0);}}
+@keyframes burdenFade{to{opacity:1;}}
 @keyframes chipIn{to{opacity:1;transform:translateX(0);}}
 
+@media (max-width:1050px){
+  #s2 .treatment-burden{right:2.5rem;width:40vw;}
+  #s2 .burden-total-copy{max-width:9rem;}
+}
+
 @media (max-width:900px){
+  #s2{justify-content:flex-start!important;overflow-y:auto!important;padding-top:4rem!important;}
   #s2 .eyebrow,#s2 h2.display,#s2 .stat-hero-label{max-width:88vw!important;width:88vw!important;}
   #s2 .chip-row{width:88vw!important;gap:2rem!important;}
   #s2 .chip{width:40vw!important;max-width:none!important;}
+  #s2 .treatment-burden{position:relative;right:auto;top:auto;width:88vw;margin-top:3.2rem;transform:none;padding-bottom:4rem;}
 }
