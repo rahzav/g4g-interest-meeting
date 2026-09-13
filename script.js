@@ -75,25 +75,24 @@
   });
 
   /* ---- number count-up ---- */
-  var counted = false;
-  function formatComma(n){ return n.toLocaleString('en-US'); }
   function runCounters(){
-    if(counted) return; counted = true;
-    document.querySelectorAll('#s2 [data-count]').forEach(function(el){
-      var target = parseInt(el.getAttribute('data-count'), 10);
-      var fmt = el.getAttribute('data-format');
-      if(reduced){ el.textContent = fmt === 'comma' ? formatComma(target) : target; return; }
-      var start = null; var dur = 1400;
-      function step(ts){
-        if(!start) start = ts;
-        var p = Math.min((ts-start)/dur, 1);
-        var eased = 1 - Math.pow(1-p, 3);
-        var val = Math.round(target * eased);
-        el.textContent = fmt === 'comma' ? formatComma(val) : val;
-        if(p < 1) requestAnimationFrame(step);
-      }
-      setTimeout(function(){ requestAnimationFrame(step); }, 500);
-    });
+    var el = document.querySelector('#s2 .stat-hero [data-count]');
+    if(!el) return;
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if(reduced){ el.textContent = target; return; }
+    el.textContent = '0';
+    var start = null;
+    var dur = 1400;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = Math.round(target * eased);
+      if(p < 1 && slides[1].classList.contains('active')) requestAnimationFrame(step);
+    }
+    setTimeout(function(){
+      if(slides[1].classList.contains('active')) requestAnimationFrame(step);
+    }, 420);
   }
 
   /* ---- seal draw-in ---- */
