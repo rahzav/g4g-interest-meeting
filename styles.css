@@ -59,6 +59,122 @@
   display: none !important;
 }
 
+/* Cinematic cover atmosphere: no grid, soft red light, rising ember field. */
+#s1 {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(200,16,46,.18) 0%, rgba(200,16,46,.07) 24%, transparent 47%),
+    radial-gradient(ellipse at 50% 112%, rgba(200,16,46,.10) 0%, rgba(200,16,46,.045) 28%, transparent 57%),
+    radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,.10) 58%, rgba(0,0,0,.44) 100%),
+    linear-gradient(180deg, #090a0b 0%, #0c0d0f 52%, #090a0b 100%) !important;
+}
+
+#s1 .cover-grid {
+  position: relative;
+  z-index: 3;
+}
+
+/* Small, sharper embers. The shadows are deliberately denser through the middle. */
+#s1::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: -34px !important;
+  width: 3px !important;
+  height: 3px !important;
+  border-radius: 50%;
+  z-index: 1 !important;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(255,58,68,.95) !important;
+  background-image: none !important;
+  background-size: auto !important;
+  mask-image: none !important;
+  box-shadow:
+    -620px -8px 0 rgba(210,24,45,.34),
+    -535px -38px 0 rgba(255,64,72,.48),
+    -470px -2px 0 rgba(210,24,45,.26),
+    -405px -58px 0 rgba(255,68,76,.50),
+    -350px -20px 0 rgba(210,24,45,.38),
+    -305px -74px 0 rgba(255,72,80,.56),
+    -250px -12px 0 rgba(220,28,48,.52),
+    -208px -50px 0 rgba(255,74,82,.66),
+    -170px -88px 0 rgba(220,30,50,.48),
+    -132px -24px 0 rgba(255,82,90,.72),
+    -96px -64px 0 rgba(230,32,52,.60),
+    -62px -14px 0 rgba(255,88,94,.76),
+    -28px -94px 0 rgba(235,34,54,.54),
+    0 -34px 0 rgba(255,90,96,.86),
+    34px -76px 0 rgba(235,34,54,.60),
+    72px -10px 0 rgba(255,82,90,.78),
+    110px -102px 0 rgba(225,30,50,.52),
+    150px -46px 0 rgba(255,76,84,.68),
+    195px -18px 0 rgba(220,28,48,.54),
+    238px -82px 0 rgba(255,72,80,.62),
+    286px -30px 0 rgba(215,26,46,.46),
+    338px -68px 0 rgba(255,68,76,.56),
+    400px -12px 0 rgba(210,24,45,.34),
+    468px -54px 0 rgba(255,64,72,.46),
+    548px -18px 0 rgba(210,24,45,.28),
+    625px -62px 0 rgba(255,62,70,.36);
+  filter: drop-shadow(0 0 6px rgba(200,16,46,.55));
+  transform: translate3d(-50%, 0, 0);
+  animation: coverEmbersFine 8.8s linear infinite;
+}
+
+/* Larger blurred embers on a different timing cycle so the motion does not feel uniform. */
+#s1::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: -52px !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50%;
+  z-index: 1 !important;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(255,68,76,.72) !important;
+  box-shadow:
+    -520px -28px 0 rgba(200,16,46,.15),
+    -390px -6px 0 rgba(230,36,54,.20),
+    -290px -56px 0 rgba(255,74,82,.28),
+    -215px -18px 0 rgba(220,28,48,.24),
+    -145px -70px 0 rgba(255,80,88,.35),
+    -78px -12px 0 rgba(230,34,54,.30),
+    -18px -52px 0 rgba(255,86,94,.40),
+    42px -8px 0 rgba(235,38,56,.34),
+    112px -66px 0 rgba(255,78,86,.35),
+    185px -22px 0 rgba(225,30,50,.28),
+    268px -60px 0 rgba(255,72,80,.27),
+    355px -12px 0 rgba(220,28,48,.22),
+    465px -48px 0 rgba(245,56,68,.18),
+    560px -16px 0 rgba(200,16,46,.14);
+  filter: blur(.8px) drop-shadow(0 0 10px rgba(200,16,46,.38));
+  transform: translate3d(-50%, 0, 0) scale(.9);
+  animation: coverEmbersSoft 11.6s linear -4.2s infinite;
+}
+
+@keyframes coverEmbersFine {
+  0%   { transform: translate3d(-50%, 0, 0) scale(.72); opacity: 0; }
+  8%   { opacity: .76; }
+  38%  { opacity: .60; }
+  68%  { opacity: .24; }
+  100% { transform: translate3d(calc(-50% + 18px), -245px, 0) scale(1.08); opacity: 0; }
+}
+
+@keyframes coverEmbersSoft {
+  0%   { transform: translate3d(-50%, 0, 0) scale(.82); opacity: 0; }
+  10%  { opacity: .58; }
+  42%  { opacity: .44; }
+  72%  { opacity: .16; }
+  100% { transform: translate3d(calc(-50% - 24px), -195px, 0) scale(1.16); opacity: 0; }
+}
+
 @media (max-width: 800px) {
   #s1 .emblem-stage {
     width: min(68vw, 430px);
@@ -72,5 +188,11 @@
   }
   #s1 .kicker-line::after {
     font-size: clamp(3.4rem, 13.5vw, 6rem);
+  }
+  #s1::before {
+    transform: translate3d(-50%, 0, 0) scale(.72);
+  }
+  #s1::after {
+    transform: translate3d(-50%, 0, 0) scale(.72);
   }
 }
