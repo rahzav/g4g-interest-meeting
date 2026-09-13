@@ -1,12 +1,8 @@
 (function(){
   var slide2Fix = document.createElement('link');
   slide2Fix.rel = 'stylesheet';
-  slide2Fix.href = 'slide2-fix.css?v=20260913-final3';
+  slide2Fix.href = 'slide2-fix.css?v=20260913-noimage1';
   document.head.appendChild(slide2Fix);
-
-  var imagePatch = document.createElement('style');
-  imagePatch.textContent = '#s2 .s2-visual::before{display:none!important;content:none!important;}#s2 .s2-visual>img{display:block!important;visibility:visible!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;z-index:10!important;border-radius:14px!important;}';
-  document.head.appendChild(imagePatch);
 
   var s2 = document.getElementById('s2');
   if(s2){
@@ -26,14 +22,7 @@
 
     if(cite) cite.textContent = '';
 
-    var visual = s2.querySelector('.s2-visual');
-    if(!visual){
-      visual = document.createElement('div');
-      visual.className = 's2-visual';
-      s2.appendChild(visual);
-    }
-    visual.setAttribute('aria-label', 'Glioblastoma MRI image');
-    visual.innerHTML = '<img src="assets/gbm-exact.jpg?v=20260913" alt="Glioblastoma MRI">';
+    s2.querySelectorAll('.s2-visual').forEach(function(el){ el.remove(); });
   }
 })();
 
