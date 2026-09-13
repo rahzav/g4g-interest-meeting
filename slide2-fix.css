@@ -275,3 +275,35 @@
   #s2 .s2-visual { display:none !important; }
   #s2 .cite { left:2rem !important; right:2rem !important; text-align:left !important; }
 }
+
+/* User-provided MRI image override: single clean image, no labels or captions. */
+#s2 .s2-visual {
+  width:min(39vw,680px) !important;
+  height:auto !important;
+  aspect-ratio:723 / 424 !important;
+  display:block !important;
+  background:url('assets/gbm-mri-user.svg') center / contain no-repeat !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  border-radius:14px !important;
+  box-shadow:0 28px 90px rgba(0,0,0,.58), 0 0 44px rgba(200,16,46,.07) !important;
+  overflow:hidden !important;
+}
+
+#s2 .s2-visual::after {
+  display:none !important;
+  content:none !important;
+}
+
+#s2 .s2-visual::before {
+  inset:-8% -8% !important;
+  background:radial-gradient(circle at 58% 55%, rgba(200,16,46,.14), rgba(200,16,46,.04) 45%, transparent 72%) !important;
+  filter:blur(38px) !important;
+}
+
+#s2 .s2-visual > * {
+  display:none !important;
+}
+
+#s2 .cite::after {
+  content:'Sources: Gray for Glioblastoma, citing Mayo Clinic and the American Brain Tumor Association' !important;
+}
