@@ -1,7 +1,7 @@
 (function(){
   var slide2Fix = document.createElement('link');
   slide2Fix.rel = 'stylesheet';
-  slide2Fix.href = 'slide2-fix.css?v=20260912e';
+  slide2Fix.href = 'slide2-fix.css?v=20260912f';
   document.head.appendChild(slide2Fix);
 
   /* Slide 2 content upgrade: use real DOM text so it can be selected/copied, and add sourced MRI imagery. */
@@ -22,7 +22,7 @@
     }
 
     if(cite){
-      cite.textContent = 'Sources: Gray for Glioblastoma, citing Mayo Clinic and the American Brain Tumor Association · MRI: Wikimedia Commons, Christaras A (CC BY 2.5)';
+      cite.textContent = '';
     }
 
     if(!s2.querySelector('.s2-visual')){
