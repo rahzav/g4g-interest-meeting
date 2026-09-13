@@ -22,7 +22,7 @@
 #s2 .eyebrow::after{display:none!important;content:none!important;}
 
 #s2 h2.display{
-  margin:0 0 clamp(1.85rem,3vw,2.5rem) 0!important;
+  margin:0 0 clamp(2.25rem,3.35vw,2.9rem) 0!important;
   width:min(52vw,820px)!important;
   max-width:min(52vw,820px)!important;
   font-family:Georgia,'Times New Roman',serif!important;
@@ -42,7 +42,7 @@
   display:flex!important;
   align-items:baseline!important;
   gap:.3rem!important;
-  margin:0 0 .3rem 0!important;
+  margin:clamp(.8rem,1.1vw,1.05rem) 0 .35rem 0!important;
   opacity:0;
   transform:translateY(22px);
 }
@@ -50,7 +50,7 @@
 #s2 .stat-hero .num{
   font-family:var(--serif)!important;
   font-weight:600!important;
-  font-size:clamp(6rem,12vw,10rem)!important;
+  font-size:clamp(5.8rem,11.4vw,9.6rem)!important;
   line-height:.86!important;
   letter-spacing:-.035em!important;
   color:var(--white)!important;
@@ -65,7 +65,7 @@
 }
 #s2 .stat-hero .num::after,#s2 .stat-hero .unit::after,#s2 .stat-hero-label::after{display:none!important;content:none!important;}
 #s2 .stat-hero-label{
-  margin-top:.2rem!important;
+  margin-top:.35rem!important;
   max-width:52vw;
   font-family:var(--sans)!important;
   font-size:clamp(1rem,1.35vw,1.2rem)!important;
@@ -82,7 +82,7 @@
   flex-direction:row!important;
   flex-wrap:nowrap!important;
   gap:clamp(2.4rem,4vw,4.8rem)!important;
-  margin-top:clamp(2.2rem,3.8vw,3.2rem)!important;
+  margin-top:clamp(1.9rem,3vw,2.5rem)!important;
 }
 #s2 .chip{
   width:min(250px,23vw)!important;

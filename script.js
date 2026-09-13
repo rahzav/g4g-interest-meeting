@@ -1,7 +1,7 @@
 (function(){
   var slide2Fix = document.createElement('link');
   slide2Fix.rel = 'stylesheet';
-  slide2Fix.href = 'slide2-fix.css?v=20260913-noimage2';
+  slide2Fix.href = 'slide2-fix.css?v=' + Date.now();
   document.head.appendChild(slide2Fix);
 
   var s2 = document.getElementById('s2');
