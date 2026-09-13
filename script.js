@@ -1,4 +1,11 @@
 (function(){
+  var slide2Fix = document.createElement('link');
+  slide2Fix.rel = 'stylesheet';
+  slide2Fix.href = 'slide2-fix.css?v=20260912b';
+  document.head.appendChild(slide2Fix);
+})();
+
+(function(){
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   var deck = document.getElementById('deck');
   var dotsWrap = document.getElementById('dots');
