@@ -3,3 +3,28 @@
 @import url('css3.css');
 @import url('css4.css');
 @import url('css5.css');
+
+/* Cover emblem override: use the transparent vector emblem without a rectangular image background. */
+#s1 .emblem-stage {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#s1 .cover-emblem {
+  opacity: 0 !important;
+}
+
+#s1 .emblem-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: url('assets/g4g-emblem.svg') center / contain no-repeat;
+  transform: translateY(0);
+  pointer-events: none;
+}
+
+#s1.active .emblem-stage::after {
+  animation: emblemFloat 5.5s ease-in-out 1.45s infinite;
+}
