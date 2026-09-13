@@ -6,7 +6,7 @@
 
   var slide2VisualStyles = document.createElement('style');
   slide2VisualStyles.textContent = `
-    /* Slide 2: unified percentage + integrated treatment-cost visual */
+    /* Slide 2: unified percentage + integrated total treatment-cost visual */
     #s2 .stat-hero .unit{display:none!important;}
     #s2 .stat-hero .num.stat-percent{
       white-space:nowrap!important;
@@ -20,28 +20,16 @@
 
     #s2 .cost-rise{
       position:absolute;
-      right:clamp(5.5rem,7.2vw,8rem);
-      top:50%;
-      width:min(33vw,510px);
-      transform:translateY(-44%);
+      right:clamp(3.8rem,5vw,6rem);
+      top:52%;
+      width:min(39vw,640px);
+      transform:translateY(-42%);
       z-index:3;
       pointer-events:none;
     }
-    #s2 .cost-rise-kicker{
-      margin:0 0 clamp(.7rem,1.1vw,1rem) 0;
-      font-family:var(--sans);
-      font-size:clamp(.72rem,.86vw,.88rem);
-      font-weight:700;
-      line-height:1.15;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      color:var(--scarlet);
-      opacity:0;
-      transform:translateY(10px);
-    }
     #s2 .cost-rise-stage{
       position:relative;
-      height:clamp(285px,41vh,410px);
+      height:clamp(330px,48vh,470px);
       width:100%;
     }
     #s2 .cost-rise-svg{
@@ -56,68 +44,40 @@
       stroke:var(--scarlet);
       stroke-width:7;
       stroke-linecap:round;
-      stroke-dasharray:520;
-      stroke-dashoffset:520;
-      filter:drop-shadow(0 0 8px rgba(200,16,46,.22));
+      filter:drop-shadow(0 0 9px rgba(200,16,46,.2));
     }
     #s2 .cost-rise-head{
       fill:var(--scarlet);
-      opacity:0;
-      transform-box:fill-box;
-      transform-origin:center;
-      transform:scale(.7);
       filter:drop-shadow(0 0 8px rgba(200,16,46,.18));
     }
-    #s2 .cost-rise-value{
-      position:absolute;
-      right:0;
-      top:clamp(.2rem,1vh,.7rem);
+    #s2 .cost-rise-value-text{
       font-family:var(--serif);
-      font-size:clamp(3.1rem,5.2vw,5.25rem);
+      font-size:clamp(42px,4.35vw,66px);
       font-weight:600;
-      line-height:.88;
       letter-spacing:-.055em;
-      color:var(--white);
-      white-space:nowrap;
-      opacity:0;
-      transform:translateY(12px);
+      fill:var(--white);
       font-variant-numeric:tabular-nums;
     }
     #s2 .cost-rise-caption{
       position:absolute;
-      right:.15rem;
-      top:clamp(4.5rem,8.8vh,6.3rem);
-      width:min(13.5rem,52%);
+      right:0;
+      bottom:.2rem;
       font-family:var(--sans);
-      font-size:clamp(.76rem,.95vw,.94rem);
+      font-size:clamp(.76rem,.9vw,.92rem);
       font-weight:500;
-      line-height:1.4;
+      line-height:1.35;
       text-align:right;
       color:var(--stone-500);
       opacity:0;
       transform:translateY(8px);
     }
-    #s2.active .cost-rise-kicker{
-      animation:costMetaIn 520ms cubic-bezier(.2,.8,.2,1) 310ms forwards;
-    }
-    #s2.active .cost-rise-line{
-      animation:costArrowDraw 1350ms cubic-bezier(.16,1,.3,1) 430ms forwards;
-    }
-    #s2.active .cost-rise-head{
-      animation:costArrowHead 420ms cubic-bezier(.16,1,.3,1) 1510ms forwards;
-    }
-    #s2.active .cost-rise-value{
-      animation:costMetaIn 520ms cubic-bezier(.2,.8,.2,1) 520ms forwards;
-    }
     #s2.active .cost-rise-caption{
-      animation:costMetaIn 520ms cubic-bezier(.2,.8,.2,1) 720ms forwards;
+      animation:costCaptionIn 520ms cubic-bezier(.2,.8,.2,1) 720ms forwards;
     }
-    @keyframes costArrowDraw{to{stroke-dashoffset:0;}}
-    @keyframes costArrowHead{to{opacity:1;transform:scale(1);}}
-    @keyframes costMetaIn{to{opacity:1;transform:translateY(0);}}
+    @keyframes costCaptionIn{to{opacity:1;transform:translateY(0);}}
 
     @media (max-width:1100px){
-      #s2 .cost-rise{right:4.5rem;width:min(34vw,455px);}
+      #s2 .cost-rise{right:3.5rem;width:min(38vw,540px);}
     }
     @media (max-width:900px){
       #s2{overflow-y:auto!important;}
@@ -130,7 +90,7 @@
         margin-top:2.6rem;
         padding-bottom:3.5rem;
       }
-      #s2 .cost-rise-stage{height:300px;}
+      #s2 .cost-rise-stage{height:320px;}
     }
   `;
   document.head.appendChild(slide2VisualStyles);
@@ -167,16 +127,19 @@
 
     var costRise = document.createElement('div');
     costRise.className = 'cost-rise';
-    costRise.setAttribute('aria-label', 'Treatment burden: first-year direct medical costs can exceed 200 thousand dollars');
+    costRise.setAttribute('aria-label', 'Estimated total treatment cost can exceed 200 thousand dollars');
     costRise.innerHTML =
-      '<div class="cost-rise-kicker">Treatment Burden</div>' +
       '<div class="cost-rise-stage">' +
-        '<svg class="cost-rise-svg" viewBox="0 0 500 330" aria-hidden="true">' +
-          '<path class="cost-rise-line" d="M38 292 L408 86"></path>' +
-          '<polygon class="cost-rise-head" points="414,82 379,90 395,116"></polygon>' +
+        '<svg class="cost-rise-svg" viewBox="0 0 620 400" aria-hidden="true">' +
+          '<path class="cost-rise-line" d="M88 352 L560 54"></path>' +
+          '<g class="cost-rise-head-wrap" opacity="0">' +
+            '<polygon class="cost-rise-head" points="0,0 -31,15 -24,-16"></polygon>' +
+          '</g>' +
+          '<g class="cost-rise-value-wrap" opacity="0">' +
+            '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
+          '</g>' +
         '</svg>' +
-        '<div class="cost-rise-value" data-cost-target="200">$0K+</div>' +
-        '<div class="cost-rise-caption">first-year direct medical costs</div>' +
+        '<div class="cost-rise-caption">estimated total treatment cost</div>' +
       '</div>';
     s2.appendChild(costRise);
   }
@@ -282,23 +245,63 @@
   }
 
   function runCostRise(){
-    var el = document.querySelector('#s2 .cost-rise-value[data-cost-target]');
-    if(!el) return;
-    var target = parseInt(el.getAttribute('data-cost-target'), 10);
-    if(reduced){ el.textContent = '$' + target + 'K+'; return; }
-    el.textContent = '$0K+';
+    var path = document.querySelector('#s2 .cost-rise-line');
+    var head = document.querySelector('#s2 .cost-rise-head-wrap');
+    var valueWrap = document.querySelector('#s2 .cost-rise-value-wrap');
+    var valueText = document.querySelector('#s2 .cost-rise-value-text');
+    if(!path || !head || !valueWrap || !valueText) return;
+
+    var target = 200;
+    var length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+    head.setAttribute('opacity', '0');
+    valueWrap.setAttribute('opacity', '0');
+    valueText.textContent = '$0k';
+
+    function placeAt(progress){
+      var distance = length * progress;
+      var point = path.getPointAtLength(distance);
+      var tangentPoint = path.getPointAtLength(Math.min(length, distance + 1));
+      var angle = Math.atan2(tangentPoint.y - point.y, tangentPoint.x - point.x) * 180 / Math.PI;
+      head.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ') rotate(' + angle + ')');
+      valueWrap.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ')');
+    }
+
+    if(reduced){
+      path.style.strokeDashoffset = '0';
+      placeAt(1);
+      head.setAttribute('opacity', '1');
+      valueWrap.setAttribute('opacity', '1');
+      valueText.textContent = '$200k+';
+      return;
+    }
+
+    placeAt(0);
     var start = null;
-    var dur = 1350;
+    var dur = 3200;
     function step(ts){
       if(!start) start = ts;
       var p = Math.min((ts-start)/dur, 1);
-      var eased = 1 - Math.pow(1-p, 3);
-      el.textContent = '$' + Math.round(target * eased) + 'K+';
+      var eased = p * p * (3 - 2 * p);
+
+      path.style.strokeDashoffset = length * (1 - eased);
+      placeAt(eased);
+
+      if(p > .015){
+        head.setAttribute('opacity', '1');
+        valueWrap.setAttribute('opacity', '1');
+      }
+
+      var shown = Math.round(target * eased);
+      valueText.textContent = '$' + shown + 'k' + (p >= .995 ? '+' : '');
+
       if(p < 1 && slides[1].classList.contains('active')) requestAnimationFrame(step);
     }
+
     setTimeout(function(){
       if(slides[1].classList.contains('active')) requestAnimationFrame(step);
-    }, 500);
+    }, 520);
   }
 
   var sealDrawn = false;
