@@ -1,7 +1,7 @@
 (function(){
   var slide2Fix = document.createElement('link');
   slide2Fix.rel = 'stylesheet';
-  slide2Fix.href = 'slide2-fix.css?v=20260913-noimage1';
+  slide2Fix.href = 'slide2-fix.css?v=20260913-burden1';
   document.head.appendChild(slide2Fix);
 
   var s2 = document.getElementById('s2');
@@ -23,6 +23,26 @@
     if(cite) cite.textContent = '';
 
     s2.querySelectorAll('.s2-visual').forEach(function(el){ el.remove(); });
+    s2.querySelectorAll('.treatment-burden').forEach(function(el){ el.remove(); });
+
+    var burden = document.createElement('div');
+    burden.className = 'treatment-burden';
+    burden.setAttribute('aria-label', 'Treatment burden of glioblastoma care');
+    burden.innerHTML =
+      '<div class="burden-kicker">Treatment Burden</div>' +
+      '<div class="burden-title">Care adds up fast.</div>' +
+      '<div class="burden-list">' +
+        '<div class="burden-row"><span class="burden-plus">+</span><span class="burden-label">Surgery &amp; hospital care</span></div>' +
+        '<div class="burden-row"><span class="burden-plus">+</span><span class="burden-label">Radiation</span></div>' +
+        '<div class="burden-row"><span class="burden-plus">+</span><span class="burden-label">Chemotherapy</span></div>' +
+        '<div class="burden-row"><span class="burden-plus">+</span><span class="burden-label">Imaging &amp; follow-up</span></div>' +
+      '</div>' +
+      '<div class="burden-total">' +
+        '<div class="burden-total-number" data-burden-target="200">$0K+</div>' +
+        '<div class="burden-total-copy">in direct medical costs within the first year after diagnosis</div>' +
+      '</div>' +
+      '<div class="burden-context">U.S. commercially insured patients</div>';
+    s2.appendChild(burden);
   }
 })();
 
@@ -56,7 +76,10 @@
     counter.textContent = pad(i+1) + ' / ' + pad(slides.length);
     document.getElementById('bg-canvas').classList.toggle('show', slides[i].classList.contains('dark'));
     updateButtons();
-    if(i === 1) runCounters();
+    if(i === 1){
+      runCounters();
+      runBurden();
+    }
   }
   function updateButtons(){
     prevBtn.disabled = current === 0;
@@ -120,6 +143,26 @@
     setTimeout(function(){
       if(slides[1].classList.contains('active')) requestAnimationFrame(step);
     }, 420);
+  }
+
+  function runBurden(){
+    var el = document.querySelector('#s2 .burden-total-number[data-burden-target]');
+    if(!el) return;
+    var target = parseInt(el.getAttribute('data-burden-target'), 10);
+    if(reduced){ el.textContent = '$' + target + 'K+'; return; }
+    el.textContent = '$0K+';
+    var start = null;
+    var dur = 1150;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = '$' + Math.round(target * eased) + 'K+';
+      if(p < 1 && slides[1].classList.contains('active')) requestAnimationFrame(step);
+    }
+    setTimeout(function(){
+      if(slides[1].classList.contains('active')) requestAnimationFrame(step);
+    }, 1180);
   }
 
   var sealDrawn = false;
