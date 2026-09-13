@@ -1,7 +1,7 @@
 (function(){
   var slide2Fix = document.createElement('link');
   slide2Fix.rel = 'stylesheet';
-  slide2Fix.href = 'slide2-fix.css?v=20260912d';
+  slide2Fix.href = 'slide2-fix.css?v=20260912e';
   document.head.appendChild(slide2Fix);
 
   /* Slide 2 content upgrade: use real DOM text so it can be selected/copied, and add sourced MRI imagery. */
@@ -28,7 +28,7 @@
     if(!s2.querySelector('.s2-visual')){
       var visual = document.createElement('div');
       visual.className = 's2-visual';
-      visual.setAttribute('aria-label', 'Normal brain MRI compared with glioblastoma brain MRI');
+      visual.setAttribute('aria-label', 'Glioblastoma MRI image');
       visual.innerHTML =
         '<div class="s2-visual-kicker">GBM on MRI</div>' +
         '<div class="s2-scan s2-scan-main">' +
