@@ -123,12 +123,12 @@
         '<svg class="cost-rise-svg" viewBox="0 0 640 420" aria-hidden="true">' +
           '<path class="cost-rise-line" d="M58 366 L578 42"></path>' +
           '<g class="cost-rise-head-wrap" opacity="0">' +
-            '<polygon class="cost-rise-head" points="0,0 -30,-16 -30,16"></polygon>' +
+            '<polygon class="cost-rise-head" points="58,366 58,366 58,366"></polygon>' +
           '</g>' +
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
           '</g>' +
-          '<text class="cost-rise-caption-text" x="58" y="399">estimated total cost</text>' +
+          '<text class="cost-rise-caption-text" x="58" y="399" text-anchor="middle">estimated total cost of treatment</text>' +
         '</svg>' +
       '</div>';
     s2.appendChild(costRise);
@@ -237,9 +237,10 @@
   function runCostRise(){
     var path = document.querySelector('#s2 .cost-rise-line');
     var head = document.querySelector('#s2 .cost-rise-head-wrap');
+    var headShape = document.querySelector('#s2 .cost-rise-head');
     var valueWrap = document.querySelector('#s2 .cost-rise-value-wrap');
     var valueText = document.querySelector('#s2 .cost-rise-value-text');
-    if(!path || !head || !valueWrap || !valueText) return;
+    if(!path || !head || !headShape || !valueWrap || !valueText) return;
 
     var target = 300;
     var length = path.getTotalLength();
@@ -250,15 +251,55 @@
     valueText.textContent = '$0k';
 
     function placeAt(progress){
-      var distance = length * progress;
+      var distance = Math.max(0, Math.min(length, length * progress));
       var point = path.getPointAtLength(distance);
-      var delta = 2.5;
-      var before = path.getPointAtLength(Math.max(0, distance - delta));
-      var after = path.getPointAtLength(Math.min(length, distance + delta));
+      var delta = Math.min(2.5, length);
+      var beforeDistance;
+      var afterDistance;
+
+      if(distance <= delta){
+        beforeDistance = distance;
+        afterDistance = Math.min(length, distance + delta);
+      }else if(distance >= length - delta){
+        beforeDistance = Math.max(0, distance - delta);
+        afterDistance = distance;
+      }else{
+        beforeDistance = distance - delta;
+        afterDistance = distance + delta;
+      }
+
+      var before = path.getPointAtLength(beforeDistance);
+      var after = path.getPointAtLength(afterDistance);
       var dx = after.x - before.x;
       var dy = after.y - before.y;
-      var angle = Math.atan2(dy, dx) * 180 / Math.PI;
-      head.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ') rotate(' + angle + ')');
+      var tangentLength = Math.sqrt(dx * dx + dy * dy);
+
+      if(tangentLength < 0.001){
+        before = path.getPointAtLength(Math.max(0, distance - 1));
+        after = path.getPointAtLength(Math.min(length, distance + 1));
+        dx = after.x - before.x;
+        dy = after.y - before.y;
+        tangentLength = Math.sqrt(dx * dx + dy * dy) || 1;
+      }
+
+      var ux = dx / tangentLength;
+      var uy = dy / tangentLength;
+      var perpendicularX = -uy;
+      var perpendicularY = ux;
+      var headLength = 30;
+      var halfWidth = 16;
+      var baseX = point.x - ux * headLength;
+      var baseY = point.y - uy * headLength;
+      var cornerAX = baseX + perpendicularX * halfWidth;
+      var cornerAY = baseY + perpendicularY * halfWidth;
+      var cornerBX = baseX - perpendicularX * halfWidth;
+      var cornerBY = baseY - perpendicularY * halfWidth;
+
+      headShape.setAttribute('points',
+        point.x + ',' + point.y + ' ' +
+        cornerAX + ',' + cornerAY + ' ' +
+        cornerBX + ',' + cornerBY
+      );
       valueWrap.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ')');
     }
 
