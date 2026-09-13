@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rutgers Gray for Glioblastoma — Fall 2026 Kickoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.0.3/qrcode.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div id="brandmark">Rutgers G4G</div>
+<button id="fs-btn" aria-label="Toggle fullscreen">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3M16 3h3a2 2 0 012 2v3M8 21H5a2 2 0 01-2-2v-3M16 21h3a2 2 0 002-2v-3"/></svg>
+</button>
+<div id="dots"></div>
+<div id="counter">01 / 10</div>
+<div id="arrows">
+  <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="nav-btn" id="nextBtn" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<div id="deck">
+
+  <!-- SLIDE 1 — COVER -->
+  <section class="slide dark" id="s1">
+    <div class="cover-grid">
+      <div class="cover-copy">
+        <div class="kicker-line">Rutgers University · Fall 2026 Interest Meeting</div>
+        <h1 class="wordmark"><span>Gray for</span><span><span class="cover-accent">Glioblastoma</span></span></h1>
+        <div class="cover-rule"></div>
+        <p class="cover-lede">Advocacy. Research. Education — built by Rutgers students for the fight against glioblastoma.</p>
+        <div class="cover-meta"><span>Rutgers G4G</span><span class="dot-sep"></span><span>Established 2026</span></div>
+      </div>
+      <div class="emblem-stage" aria-label="Rutgers Gray for Glioblastoma emblem">
+        <img class="cover-emblem" src="assets/g4g-emblem.webp" alt="Rutgers Gray for Glioblastoma emblem">
+      </div>
+    </div>
+    <div id="scroll-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      Continue
+    </div>
+  </section>
+
+  <!-- SLIDE 2 — THE REALITY -->
+  <section class="slide dark" id="s2">
+    <div class="eyebrow">Why this matters</div>
+    <h2 class="display" style="max-width:820px;">Glioblastoma is one of the most aggressive cancers there is.</h2>
+    <div class="stat-hero">
+      <span class="num" data-count="25">0</span><span class="unit">%</span>
+    </div>
+    <div class="stat-hero-label">of patients survive past one year</div>
+    <div class="chip-row">
+      <div class="chip"><div class="chip-num" data-count="108810" data-format="comma">0</div><div class="chip-label">adults expected to be diagnosed with a primary brain tumor in the US this year</div></div>
+      <div class="chip"><div class="chip-num">&lt;3%</div><div class="chip-label">of major cancer research funding reaches brain and CNS cancers</div></div>
+    </div>
+    <div class="gap-line">That's the gap Rutgers G4G exists to help close.</div>
+    <div class="cite">Sources: Gray for Glioblastoma, citing Mayo Clinic and the American Brain Tumor Association</div>
+  </section>
+
+  <!-- SLIDE 3 — WHO WE ARE -->
+  <section class="slide light" id="s3">
+    <div class="grid-3">
+      <div>
+        <div class="eyebrow">Who we are</div>
+        <h2 class="display">Rutgers Gray for Glioblastoma</h2>
+        <p class="body-text">A student-led collegiate chapter of the national Gray for Glioblastoma Society. We bring students together to expand awareness, engage with glioblastoma research, and build educational initiatives that connect the scientific, clinical, and community sides of the disease.</p>
+        <div class="meta-row">
+          <div class="meta-item"><div class="k">Founded</div><div class="v">2026</div></div>
+          <div class="meta-item"><div class="k">Campus</div><div class="v">Rutgers University</div></div>
+          <div class="meta-item"><div class="k">Open to</div><div class="v">Every major</div></div>
+        </div>
+      </div>
+      <div class="seal-wrap">
+        <div>
+          <svg id="seal-svg" viewBox="0 0 220 220" width="220" height="220">
+            <circle cx="110" cy="110" r="98" fill="none" stroke="#c8102e" stroke-width="2" id="seal-ring-outer" stroke-dasharray="616" stroke-dashoffset="616"/>
+            <circle cx="110" cy="110" r="76" fill="none" stroke="#cfccc6" stroke-width="1" id="seal-ring-inner" stroke-dasharray="478" stroke-dashoffset="478"/>
+            <text x="110" y="104" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="34" fill="#191816">G4G</text>
+            <text x="110" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="9.5" letter-spacing="1.5" fill="#6b6864">RUTGERS CHAPTER</text>
+          </svg>
+          <div class="seal-caption">A collegiate chapter of the national Gray for Glioblastoma Society</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4 — PILLARS -->
+  <section class="slide light" id="s4">
+    <div class="eyebrow">Our mission</div>
+    <h2 class="display">Advocacy, research, education.</h2>
+    <p class="lede" style="color:var(--stone-600);">Three pillars, open to every major at Rutgers.</p>
+    <div class="pillars">
+      <div class="pillar"><div class="pillar-mark">A</div><h3>Advocacy</h3><p>Supporting informed advocacy for patients, families, and the broader glioblastoma community.</p></div>
+      <div class="pillar"><div class="pillar-mark">R</div><h3>Research</h3><p>Translating glioblastoma research into accessible content for public education.</p></div>
+      <div class="pillar"><div class="pillar-mark">E</div><h3>Education</h3><p>Building programming that helps students understand the disease, its clinical landscape, and its community impact.</p></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 — WHAT MAKES G4G DIFFERENT -->
+  <section class="slide light" id="s5">
+    <div class="eyebrow">Why G4G</div>
+    <h2 class="display">Real work, not just meetings.</h2>
+    <p class="lede" style="color:var(--stone-600);">Every member can contribute to something substantive, no matter your major.</p>
+    <div class="cards-grid">
+      <div class="flat-card"><h4>Student Journal</h4><p>Translate real glioblastoma research into content anyone can understand.</p></div>
+      <div class="flat-card"><h4>Research Programming</h4><p>Engage with speakers and researchers doing the actual work.</p></div>
+      <div class="flat-card"><h4>Advocacy &amp; Fundraising</h4><p>Fund and champion Gray for Glioblastoma's mission on campus.</p></div>
+      <div class="flat-card"><h4>Community Service</h4><p>Patient-facing initiatives, like card-making for GBM families.</p></div>
+      <div class="flat-card"><h4>Original Projects</h4><p>Build initiatives that don't exist yet, and lead them.</p></div>
+      <div class="flat-card"><h4>Cross-Campus Collaboration</h4><p>Partner with other orgs and programs to widen our reach.</p></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6 — JOURNAL -->
+  <section class="slide dark" id="s6">
+    <div class="eyebrow">Flagship initiative</div>
+    <h2 class="display">The G4G Journal</h2>
+    <p class="lede" style="font-family:var(--serif); font-style:italic; color:var(--stone-300);">Making glioblastoma research easier to enter, understand, and discuss.</p>
+    <div class="focus-row">
+      <div class="focus-item"><h4>Biology</h4><p>Disease mechanisms and emerging research.</p></div>
+      <div class="focus-item"><h4>Clinical Landscape</h4><p>Diagnosis, treatment, and patient outcomes.</p></div>
+      <div class="focus-item"><h4>Community</h4><p>Patient experience, public health, and advocacy.</p></div>
+    </div>
+    <div class="process-track">
+      <div class="process-step"><b>01</b>Research</div><div class="process-connector"></div>
+      <div class="process-step"><b>02</b>Writing</div><div class="process-connector"></div>
+      <div class="process-step"><b>03</b>Editorial Review</div><div class="process-connector"></div>
+      <div class="process-step"><b>04</b>Publication</div>
+    </div>
+    <div class="issue-tag">Issue 01 — in development</div>
+  </section>
+
+  <!-- SLIDE 7 — SEASON AHEAD -->
+  <section class="slide light" id="s7">
+    <div class="eyebrow">Fall 2026</div>
+    <h2 class="display">The season ahead.</h2>
+    <div class="timeline">
+      <div class="t-node"><div class="t-title">Interest Meeting &amp; Fall Kickoff</div><div class="t-desc">Today — the start of our first full semester.</div></div>
+      <div class="t-node"><div class="t-title">Educational Programming</div><div class="t-desc">Campus-wide brain tumor awareness content.</div></div>
+      <div class="t-node"><div class="t-title">Fundraising Initiatives</div><div class="t-desc">Campus campaigns supporting Gray for Glioblastoma.</div></div>
+      <div class="t-node"><div class="t-title">Patient Card-Making Initiative</div><div class="t-desc">Handwritten notes of support for GBM patients and families.</div></div>
+      <div class="t-node"><div class="t-title">Research Programming</div><div class="t-desc">Bringing researchers and their work to students.</div></div>
+      <div class="t-node planned"><div class="t-title">G4G × HerHealth + Casino Night</div><div class="t-desc">Planned collaboration with an MCAT sponsor.</div></div>
+      <div class="t-node planned"><div class="t-title">Mini G4G Research Symposium</div><div class="t-desc">Planned — professionals and researchers, in the works.</div></div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot"></span>Confirmed</div>
+      <div class="legend-item"><span class="legend-dot o"></span>Planned, details finalizing</div>
+      <div class="legend-item">Follow @rugray4glio for updates</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8 — COMMITTEES -->
+  <section class="slide light" id="s8">
+    <div class="eyebrow">Get involved</div>
+    <h2 class="display">Find your committee.</h2>
+    <p class="lede" style="color:var(--stone-600);">Apply to up to three, no experience required. Click a card to see what you'll actually do.</p>
+    <div class="committee-grid">
+      <div class="committee-card" data-committee="1"><div class="card-inner">
+        <div class="card-face card-front"><h4>Marketing</h4><p>Content, campaigns, and event promotion.</p><div class="tap-hint">Tap to see more →</div></div>
+        <div class="card-face card-back"><div class="back-title">You'll actually...</div><ul><li>Design graphics &amp; social content</li><li>Run awareness campaigns</li><li>Promote events across campus</li></ul></div>
+      </div></div>
+      <div class="committee-card" data-committee="2"><div class="card-inner">
+        <div class="card-face card-front"><h4>Education &amp; Outreach</h4><p>Speaker events, programming, campus collabs.</p><div class="tap-hint">Tap to see more →</div></div>
+        <div class="card-face card-back"><div class="back-title">You'll actually...</div><ul><li>Plan educational programming</li><li>Organize speaker events</li><li>Build campus partnerships</li></ul></div>
+      </div></div>
+      <div class="committee-card" data-committee="3"><div class="card-inner">
+        <div class="card-face card-front"><h4>Advocacy &amp; Fundraising</h4><p>Awareness and fundraising for GFG's mission.</p><div class="tap-hint">Tap to see more →</div></div>
+        <div class="card-face card-back"><div class="back-title">You'll actually...</div><ul><li>Run fundraising campaigns</li><li>Build advocacy initiatives</li><li>Support GFG's national mission</li></ul></div>
+      </div></div>
+      <div class="committee-card" data-committee="4"><div class="card-inner">
+        <div class="card-face card-front"><h4>Research</h4><p>Contribute to the Journal; shape research initiatives.</p><div class="tap-hint">Tap to see more →</div></div>
+        <div class="card-face card-back"><div class="back-title">You'll actually...</div><ul><li>Write for the G4G Journal</li><li>Translate research for the public</li><li>Help design research initiatives</li></ul></div>
+      </div></div>
+      <div class="committee-card" data-committee="5"><div class="card-inner">
+        <div class="card-face card-front"><h4>Finance &amp; Logistics</h4><p>Budgeting, coordination, and growth strategy.</p><div class="tap-hint">Tap to see more →</div></div>
+        <div class="card-face card-back"><div class="back-title">You'll actually...</div><ul><li>Manage event budgets</li><li>Coordinate event logistics</li><li>Shape chapter growth strategy</li></ul></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9 — TRACKS -->
+  <section class="slide light" id="s9">
+    <div class="eyebrow">No wrong way in</div>
+    <h2 class="display" style="max-width:760px;">Show up as much, or as little, as you want.</h2>
+    <div class="track-grid">
+      <div class="track-card a">
+        <div class="track-tag">General member</div>
+        <h3>Come as you are.</h3>
+        <ul>
+          <li>Attend meetings &amp; events</li>
+          <li>Follow along on Instagram &amp; GroupMe</li>
+          <li>Show up whenever something interests you</li>
+          <li>No application required</li>
+        </ul>
+      </div>
+      <div class="track-card b">
+        <div class="track-tag">Committee member</div>
+        <h3>Go deeper.</h3>
+        <ul>
+          <li>Apply to up to 3 committees</li>
+          <li>Own a project from start to finish</li>
+          <li>No prior experience needed</li>
+          <li>Just consistency &amp; communication</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 10 — CLOSE -->
+  <section class="slide dark" id="s10">
+    <div class="close-grid">
+      <div>
+        <div class="eyebrow" style="opacity:1; transform:none;">Rutgers G4G is brand new</div>
+        <h1 class="display" style="font-size:clamp(2.2rem,5vw,4.2rem);">Be here at the beginning.</h1>
+        <p class="lede">Which means the biggest opportunities, the ones with your name on them, are still unclaimed.</p>
+        <div style="margin-top:2rem;">
+          <div class="cta-row"><div class="cta-label">Apply</div><div class="cta-value">rutgersg4g.org/committee-application</div></div>
+          <div class="cta-row"><div class="cta-label">Follow</div><div class="cta-value">@rugray4glio</div></div>
+          <div class="cta-row"><div class="cta-label">Ask</div><div class="cta-value">rugray4glioblastoma@gmail.com</div></div>
+        </div>
+        <div class="hashtag-pill">#joing4g</div>
+      </div>
+      <div class="qr-wrap">
+        <div class="qr-frame" id="qr-target"></div>
+        <div class="qr-caption">Scan to apply</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
