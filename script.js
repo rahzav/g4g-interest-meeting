@@ -1,7 +1,7 @@
 (function(){
   var slide2Fix = document.createElement('link');
   slide2Fix.rel = 'stylesheet';
-  slide2Fix.href = 'slide2-fix.css?v=20260912c';
+  slide2Fix.href = 'slide2-fix.css?v=20260912d';
   document.head.appendChild(slide2Fix);
 
   /* Slide 2 content upgrade: use real DOM text so it can be selected/copied, and add sourced MRI imagery. */
@@ -28,18 +28,18 @@
     if(!s2.querySelector('.s2-visual')){
       var visual = document.createElement('div');
       visual.className = 's2-visual';
-      visual.setAttribute('aria-label', 'Contrast-enhanced MRI views showing glioblastoma');
+      visual.setAttribute('aria-label', 'Normal brain MRI compared with glioblastoma brain MRI');
       visual.innerHTML =
         '<div class="s2-visual-kicker">GBM on MRI</div>' +
         '<div class="s2-scan s2-scan-main">' +
-          '<img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Glioblastoma_-_MR_sagittal_with_contrast.jpg" alt="Sagittal contrast-enhanced MRI showing glioblastoma" referrerpolicy="no-referrer">' +
-          '<div class="s2-scan-label">Sagittal view</div>' +
+          '<img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Glioblastoma_-_MR_sagittal_with_contrast.jpg" alt="Normal brain MRI" referrerpolicy="no-referrer">' +
+          '<div class="s2-scan-label">Normal</div>' +
         '</div>' +
         '<div class="s2-scan s2-scan-inset">' +
-          '<img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Glioblastoma_-_MR_coronal_with_contrast.jpg" alt="Coronal contrast-enhanced MRI showing glioblastoma" referrerpolicy="no-referrer">' +
-          '<div class="s2-scan-label">Coronal view</div>' +
+          '<img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Glioblastoma_-_MR_coronal_with_contrast.jpg" alt="Glioblastoma brain MRI" referrerpolicy="no-referrer">' +
+          '<div class="s2-scan-label">Glioblastoma</div>' +
         '</div>' +
-        '<div class="s2-visual-caption">Contrast-enhanced MRI views of the same glioblastoma case.</div>';
+        '<div class="s2-visual-caption">Normal brain compared with glioblastoma on MRI.</div>';
       s2.appendChild(visual);
     }
   }
