@@ -59,7 +59,7 @@
   display: none !important;
 }
 
-/* Cinematic cover atmosphere: no grid, soft red light, rising ember field. */
+/* Cinematic cover atmosphere: no grid, soft red light, continuous rising ember field. */
 #s1 {
   overflow: hidden;
   background:
@@ -74,105 +74,117 @@
   z-index: 3;
 }
 
-/* Small, sharper embers. The shadows are deliberately denser through the middle. */
+/* Fine ember layer. Particles are seeded at many heights so the field never clears out. */
 #s1::before {
   content: '' !important;
   position: absolute !important;
   left: 50% !important;
   top: auto !important;
   right: auto !important;
-  bottom: -34px !important;
+  bottom: -38px !important;
   width: 3px !important;
   height: 3px !important;
   border-radius: 50%;
   z-index: 1 !important;
   pointer-events: none;
-  opacity: 0;
-  background: rgba(255,58,68,.95) !important;
+  opacity: .86;
+  background: rgba(255,58,68,.92) !important;
   background-image: none !important;
   background-size: auto !important;
   mask-image: none !important;
   box-shadow:
-    -620px -8px 0 rgba(210,24,45,.34),
-    -535px -38px 0 rgba(255,64,72,.48),
-    -470px -2px 0 rgba(210,24,45,.26),
-    -405px -58px 0 rgba(255,68,76,.50),
-    -350px -20px 0 rgba(210,24,45,.38),
-    -305px -74px 0 rgba(255,72,80,.56),
-    -250px -12px 0 rgba(220,28,48,.52),
-    -208px -50px 0 rgba(255,74,82,.66),
-    -170px -88px 0 rgba(220,30,50,.48),
-    -132px -24px 0 rgba(255,82,90,.72),
-    -96px -64px 0 rgba(230,32,52,.60),
-    -62px -14px 0 rgba(255,88,94,.76),
-    -28px -94px 0 rgba(235,34,54,.54),
-    0 -34px 0 rgba(255,90,96,.86),
-    34px -76px 0 rgba(235,34,54,.60),
-    72px -10px 0 rgba(255,82,90,.78),
-    110px -102px 0 rgba(225,30,50,.52),
-    150px -46px 0 rgba(255,76,84,.68),
-    195px -18px 0 rgba(220,28,48,.54),
-    238px -82px 0 rgba(255,72,80,.62),
-    286px -30px 0 rgba(215,26,46,.46),
-    338px -68px 0 rgba(255,68,76,.56),
-    400px -12px 0 rgba(210,24,45,.34),
-    468px -54px 0 rgba(255,64,72,.46),
-    548px -18px 0 rgba(210,24,45,.28),
-    625px -62px 0 rgba(255,62,70,.36);
-  filter: drop-shadow(0 0 6px rgba(200,16,46,.55));
+    -630px -14px 0 rgba(210,24,45,.26),
+    -560px -92px 0 rgba(255,64,72,.38),
+    -505px -188px 0 rgba(210,24,45,.20),
+    -455px -48px 0 rgba(255,68,76,.42),
+    -410px -262px 0 rgba(210,24,45,.19),
+    -360px -122px 0 rgba(255,72,80,.43),
+    -320px -24px 0 rgba(220,28,48,.44),
+    -285px -214px 0 rgba(255,74,82,.47),
+    -245px -76px 0 rgba(220,30,50,.41),
+    -210px -308px 0 rgba(255,82,90,.30),
+    -175px -156px 0 rgba(230,32,52,.48),
+    -142px -38px 0 rgba(255,88,94,.64),
+    -112px -236px 0 rgba(235,34,54,.37),
+    -82px -105px 0 rgba(255,90,96,.66),
+    -52px -322px 0 rgba(235,34,54,.26),
+    -24px -186px 0 rgba(255,82,90,.52),
+    4px -58px 0 rgba(225,30,50,.58),
+    32px -274px 0 rgba(255,76,84,.35),
+    62px -132px 0 rgba(220,28,48,.51),
+    94px -18px 0 rgba(255,72,80,.62),
+    128px -226px 0 rgba(215,26,46,.34),
+    164px -94px 0 rgba(255,68,76,.54),
+    204px -336px 0 rgba(210,24,45,.23),
+    248px -174px 0 rgba(255,64,72,.45),
+    296px -54px 0 rgba(210,24,45,.39),
+    350px -248px 0 rgba(255,62,70,.34),
+    410px -116px 0 rgba(255,70,78,.39),
+    476px -300px 0 rgba(210,24,45,.19),
+    548px -72px 0 rgba(255,64,72,.34),
+    620px -210px 0 rgba(210,24,45,.20);
+  filter: drop-shadow(0 0 6px rgba(200,16,46,.52));
   transform: translate3d(-50%, 0, 0);
-  animation: coverEmbersFine 8.8s linear infinite;
+  animation: coverEmbersFine 9.6s linear infinite;
+  animation-play-state: paused;
 }
 
-/* Larger blurred embers on a different timing cycle so the motion does not feel uniform. */
+/* Softer, larger layer on a different cycle so the motion feels organic rather than synchronized. */
 #s1::after {
   content: '' !important;
   position: absolute !important;
   left: 50% !important;
   top: auto !important;
   right: auto !important;
-  bottom: -52px !important;
+  bottom: -54px !important;
   width: 6px !important;
   height: 6px !important;
   border-radius: 50%;
   z-index: 1 !important;
   pointer-events: none;
-  opacity: 0;
-  background: rgba(255,68,76,.72) !important;
+  opacity: .62;
+  background: rgba(255,68,76,.68) !important;
   box-shadow:
-    -520px -28px 0 rgba(200,16,46,.15),
-    -390px -6px 0 rgba(230,36,54,.20),
-    -290px -56px 0 rgba(255,74,82,.28),
-    -215px -18px 0 rgba(220,28,48,.24),
-    -145px -70px 0 rgba(255,80,88,.35),
-    -78px -12px 0 rgba(230,34,54,.30),
-    -18px -52px 0 rgba(255,86,94,.40),
-    42px -8px 0 rgba(235,38,56,.34),
-    112px -66px 0 rgba(255,78,86,.35),
-    185px -22px 0 rgba(225,30,50,.28),
-    268px -60px 0 rgba(255,72,80,.27),
-    355px -12px 0 rgba(220,28,48,.22),
-    465px -48px 0 rgba(245,56,68,.18),
-    560px -16px 0 rgba(200,16,46,.14);
-  filter: blur(.8px) drop-shadow(0 0 10px rgba(200,16,46,.38));
+    -570px -54px 0 rgba(200,16,46,.12),
+    -470px -184px 0 rgba(230,36,54,.16),
+    -390px -300px 0 rgba(255,74,82,.16),
+    -325px -96px 0 rgba(220,28,48,.20),
+    -270px -232px 0 rgba(255,80,88,.23),
+    -220px -28px 0 rgba(230,34,54,.25),
+    -170px -346px 0 rgba(255,86,94,.17),
+    -120px -154px 0 rgba(235,38,56,.29),
+    -72px -64px 0 rgba(255,78,86,.31),
+    -28px -268px 0 rgba(225,30,50,.19),
+    18px -126px 0 rgba(255,72,80,.29),
+    62px -18px 0 rgba(220,28,48,.30),
+    112px -328px 0 rgba(245,56,68,.15),
+    168px -202px 0 rgba(200,16,46,.18),
+    228px -78px 0 rgba(255,72,80,.26),
+    292px -286px 0 rgba(230,36,54,.16),
+    360px -142px 0 rgba(255,76,84,.22),
+    438px -44px 0 rgba(220,28,48,.20),
+    520px -242px 0 rgba(245,56,68,.14),
+    595px -112px 0 rgba(200,16,46,.13);
+  filter: blur(.8px) drop-shadow(0 0 10px rgba(200,16,46,.34));
   transform: translate3d(-50%, 0, 0) scale(.9);
-  animation: coverEmbersSoft 11.6s linear -4.2s infinite;
+  animation: coverEmbersSoft 13.4s linear -6.7s infinite;
+  animation-play-state: paused;
+}
+
+/* Run continuously for the entire time slide 1 is active; pause off-slide. */
+#s1.active::before,
+#s1.active::after {
+  animation-play-state: running;
 }
 
 @keyframes coverEmbersFine {
-  0%   { transform: translate3d(-50%, 0, 0) scale(.72); opacity: 0; }
-  8%   { opacity: .76; }
-  38%  { opacity: .60; }
-  68%  { opacity: .24; }
-  100% { transform: translate3d(calc(-50% + 18px), -245px, 0) scale(1.08); opacity: 0; }
+  from { transform: translate3d(-50%, 0, 0) scale(.76); }
+  to   { transform: translate3d(calc(-50% + 18px), -210px, 0) scale(1.04); }
 }
 
 @keyframes coverEmbersSoft {
-  0%   { transform: translate3d(-50%, 0, 0) scale(.82); opacity: 0; }
-  10%  { opacity: .58; }
-  42%  { opacity: .44; }
-  72%  { opacity: .16; }
-  100% { transform: translate3d(calc(-50% - 24px), -195px, 0) scale(1.16); opacity: 0; }
+  from { transform: translate3d(-50%, 0, 0) scale(.86); }
+  to   { transform: translate3d(calc(-50% - 26px), -225px, 0) scale(1.12); }
 }
 
 @media (max-width: 800px) {
