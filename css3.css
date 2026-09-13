@@ -1,0 +1,36 @@
+  /* ================= SLIDE 3 : WHO WE ARE ================= */
+  #s3 .grid-3{ display:grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2rem,5vw,4rem); align-items:center; }
+  .meta-row{ display:flex; gap:0; margin-top: clamp(1.6rem,3vw,2.2rem); opacity:0; transform:translateY(14px); }
+  #s3.active .meta-row{ animation: riseIn 700ms ease 700ms forwards; }
+  .meta-item{ padding: 0 1.4rem; border-left:1px solid var(--stone-300); }
+  .meta-item:first-child{ padding-left:0; border-left:none; }
+  .meta-item .k{ font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:var(--stone-500); font-weight:600; }
+  .meta-item .v{ font-size:.98rem; font-weight:600; margin-top:.15rem; color:var(--charcoal); }
+  .seal-wrap{ display:flex; align-items:center; justify-content:center; }
+  .seal-caption{ text-align:center; font-size:.85rem; color:var(--stone-600); margin-top:1rem; font-style:italic; max-width:220px; }
+
+  /* ================= SLIDE 4 : PILLARS ================= */
+  .pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap: clamp(1.4rem,2.6vw,2.4rem); margin-top: clamp(2rem,4vw,3rem); max-width:1100px; }
+  .pillar{ opacity:0; transform:translateY(26px); transition: transform 260ms ease, box-shadow 260ms ease; }
+  #s4.active .pillar:nth-child(1){ animation: riseIn 650ms cubic-bezier(.2,.8,.2,1) 500ms forwards; }
+  #s4.active .pillar:nth-child(2){ animation: riseIn 650ms cubic-bezier(.2,.8,.2,1) 680ms forwards; }
+  #s4.active .pillar:nth-child(3){ animation: riseIn 650ms cubic-bezier(.2,.8,.2,1) 860ms forwards; }
+  .pillar:hover{ transform:translateY(-6px); }
+  .pillar-mark{ width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:var(--serif); font-weight:600; font-size:1.7rem; color:var(--white); background:var(--charcoal); margin-bottom:1.1rem; }
+  .pillar:nth-child(2) .pillar-mark{ background:var(--scarlet); }
+  .pillar h3{ font-family:var(--serif); font-weight:600; font-size:1.5rem; margin:0 0 .55rem 0; }
+  .pillar p{ font-size:.96rem; line-height:1.55; color:var(--stone-600); margin:0; }
+
+  /* ================= SLIDE 5 : DIFFERENT ================= */
+  .cards-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap: clamp(1rem,1.8vw,1.6rem); margin-top: clamp(1.8rem,3.4vw,2.6rem); max-width:1180px; }
+  .flat-card{ background:var(--white); border:1px solid var(--stone-200); padding: clamp(1.1rem,1.8vw,1.5rem);
+    opacity:0; transform:translateY(20px); transition: transform 220ms ease, box-shadow 220ms ease; }
+  .flat-card:hover{ transform:translateY(-5px); box-shadow:0 14px 30px rgba(0,0,0,.08); }
+  .flat-card h4{ font-size:1.02rem; font-weight:700; margin:0 0 .4rem 0; }
+  .flat-card p{ font-size:.86rem; color:var(--stone-600); line-height:1.5; margin:0; }
+  #s5.active .flat-card{ animation: riseIn 600ms cubic-bezier(.2,.8,.2,1) forwards; }
+  #s5.active .flat-card:nth-child(1){ animation-delay:480ms;} #s5.active .flat-card:nth-child(2){ animation-delay:560ms;}
+  #s5.active .flat-card:nth-child(3){ animation-delay:640ms;} #s5.active .flat-card:nth-child(4){ animation-delay:720ms;}
+  #s5.active .flat-card:nth-child(5){ animation-delay:800ms;} #s5.active .flat-card:nth-child(6){ animation-delay:880ms;}
+
