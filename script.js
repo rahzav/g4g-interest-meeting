@@ -22,14 +22,14 @@
       position:absolute;
       right:clamp(3.8rem,5vw,6rem);
       top:52%;
-      width:min(39vw,640px);
+      width:min(39vw,650px);
       transform:translateY(-42%);
       z-index:3;
       pointer-events:none;
     }
     #s2 .cost-rise-stage{
       position:relative;
-      height:clamp(330px,48vh,470px);
+      height:clamp(345px,49vh,485px);
       width:100%;
     }
     #s2 .cost-rise-svg{
@@ -58,26 +58,16 @@
       fill:var(--white);
       font-variant-numeric:tabular-nums;
     }
-    #s2 .cost-rise-caption{
-      position:absolute;
-      right:0;
-      bottom:.2rem;
+    #s2 .cost-rise-caption-text{
       font-family:var(--sans);
-      font-size:clamp(.76rem,.9vw,.92rem);
+      font-size:14px;
       font-weight:500;
-      line-height:1.35;
-      text-align:right;
-      color:var(--stone-500);
-      opacity:0;
-      transform:translateY(8px);
+      letter-spacing:.01em;
+      fill:var(--stone-500);
     }
-    #s2.active .cost-rise-caption{
-      animation:costCaptionIn 520ms cubic-bezier(.2,.8,.2,1) 720ms forwards;
-    }
-    @keyframes costCaptionIn{to{opacity:1;transform:translateY(0);}}
 
     @media (max-width:1100px){
-      #s2 .cost-rise{right:3.5rem;width:min(38vw,540px);}
+      #s2 .cost-rise{right:3.5rem;width:min(38vw,550px);}
     }
     @media (max-width:900px){
       #s2{overflow-y:auto!important;}
@@ -90,7 +80,7 @@
         margin-top:2.6rem;
         padding-bottom:3.5rem;
       }
-      #s2 .cost-rise-stage{height:320px;}
+      #s2 .cost-rise-stage{height:330px;}
     }
   `;
   document.head.appendChild(slide2VisualStyles);
@@ -127,19 +117,19 @@
 
     var costRise = document.createElement('div');
     costRise.className = 'cost-rise';
-    costRise.setAttribute('aria-label', 'Estimated total treatment cost can exceed 200 thousand dollars');
+    costRise.setAttribute('aria-label', 'Estimated total treatment cost can exceed 300 thousand dollars');
     costRise.innerHTML =
       '<div class="cost-rise-stage">' +
-        '<svg class="cost-rise-svg" viewBox="0 0 620 400" aria-hidden="true">' +
-          '<path class="cost-rise-line" d="M88 352 L560 54"></path>' +
+        '<svg class="cost-rise-svg" viewBox="0 0 640 420" aria-hidden="true">' +
+          '<path class="cost-rise-line" d="M58 366 L578 42"></path>' +
           '<g class="cost-rise-head-wrap" opacity="0">' +
-            '<polygon class="cost-rise-head" points="0,0 -31,15 -24,-16"></polygon>' +
+            '<polygon class="cost-rise-head" points="0,0 -30,-16 -30,16"></polygon>' +
           '</g>' +
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
           '</g>' +
+          '<text class="cost-rise-caption-text" x="58" y="399">estimated total cost</text>' +
         '</svg>' +
-        '<div class="cost-rise-caption">estimated total treatment cost</div>' +
       '</div>';
     s2.appendChild(costRise);
   }
@@ -251,7 +241,7 @@
     var valueText = document.querySelector('#s2 .cost-rise-value-text');
     if(!path || !head || !valueWrap || !valueText) return;
 
-    var target = 200;
+    var target = 300;
     var length = path.getTotalLength();
     path.style.strokeDasharray = length;
     path.style.strokeDashoffset = length;
@@ -262,8 +252,12 @@
     function placeAt(progress){
       var distance = length * progress;
       var point = path.getPointAtLength(distance);
-      var tangentPoint = path.getPointAtLength(Math.min(length, distance + 1));
-      var angle = Math.atan2(tangentPoint.y - point.y, tangentPoint.x - point.x) * 180 / Math.PI;
+      var delta = 2.5;
+      var before = path.getPointAtLength(Math.max(0, distance - delta));
+      var after = path.getPointAtLength(Math.min(length, distance + delta));
+      var dx = after.x - before.x;
+      var dy = after.y - before.y;
+      var angle = Math.atan2(dy, dx) * 180 / Math.PI;
       head.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ') rotate(' + angle + ')');
       valueWrap.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ')');
     }
@@ -273,13 +267,13 @@
       placeAt(1);
       head.setAttribute('opacity', '1');
       valueWrap.setAttribute('opacity', '1');
-      valueText.textContent = '$200k+';
+      valueText.textContent = '$300k+';
       return;
     }
 
     placeAt(0);
     var start = null;
-    var dur = 3200;
+    var dur = 3500;
     function step(ts){
       if(!start) start = ts;
       var p = Math.min((ts-start)/dur, 1);
@@ -297,6 +291,13 @@
       valueText.textContent = '$' + shown + 'k' + (p >= .995 ? '+' : '');
 
       if(p < 1 && slides[1].classList.contains('active')) requestAnimationFrame(step);
+      else if(p >= 1){
+        placeAt(1);
+        path.style.strokeDashoffset = '0';
+        head.setAttribute('opacity', '1');
+        valueWrap.setAttribute('opacity', '1');
+        valueText.textContent = '$300k+';
+      }
     }
 
     setTimeout(function(){
