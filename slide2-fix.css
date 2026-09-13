@@ -1,4 +1,4 @@
-/* Slide 2 — stat-forward disease overview with a clean normal-vs-GBM MRI comparison */
+/* Slide 2 — stat-forward disease overview */
 #s2 {
   justify-content:center !important;
   align-items:flex-start !important;
@@ -28,7 +28,6 @@
 
 #s2 .eyebrow::after { display:none !important; content:none !important; }
 
-/* Real DOM text so the definition can be highlighted/copied. Georgia keeps the editorial serif feel with a conventional f. */
 #s2 h2.display {
   margin:0 0 clamp(1.85rem,3vw,2.5rem) 0 !important;
   width:min(52vw,820px) !important;
@@ -135,19 +134,23 @@
 
 #s2 .gap-line { display:none !important; }
 
+/* Right side: single clinical MRI visual, no captions or labels. */
 #s2 .s2-visual {
   position:absolute;
   right:clamp(3.5rem,5vw,6rem);
   top:50%;
   width:min(39vw,680px) !important;
   height:auto !important;
-  aspect-ratio:723 / 424 !important;
+  aspect-ratio:1.72 / 1 !important;
   transform:translateY(-48%) translateX(18px);
   opacity:0;
   z-index:3;
   pointer-events:none;
   display:block !important;
-  background:url('assets/gbm-mri-user.svg') center / contain no-repeat !important;
+  background-image:url('https://www.ksw.ch/app/uploads/2025/11/neuroradiologie-hirntumor-ksw.jpg') !important;
+  background-position:center !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
   border:1px solid rgba(255,255,255,.10) !important;
   border-radius:14px !important;
   box-shadow:0 28px 90px rgba(0,0,0,.58), 0 0 44px rgba(200,16,46,.07) !important;
@@ -162,23 +165,11 @@
   to { opacity:1; transform:translateY(-48%) translateX(0); }
 }
 
-#s2 .s2-visual::before {
-  content:'';
-  position:absolute;
-  inset:-8% -8% !important;
-  border-radius:50%;
-  background:radial-gradient(circle at 58% 55%, rgba(200,16,46,.14), rgba(200,16,46,.04) 45%, transparent 72%) !important;
-  filter:blur(38px) !important;
-  z-index:-1;
-}
-
-#s2 .s2-visual::after {
-  display:none !important;
-  content:none !important;
-}
-
+#s2 .s2-visual::before,
+#s2 .s2-visual::after,
 #s2 .s2-visual > * {
   display:none !important;
+  content:none !important;
 }
 
 /* Hide the source line on slide 2. */
