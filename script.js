@@ -66,12 +66,23 @@
       fill:var(--white);
       font-variant-numeric:tabular-nums;
     }
-    #s2 .cost-rise-caption-text{
+    #s2 .cost-rise-caption{
+      position:absolute;
+      left:9.1%;
+      bottom:0;
+      width:clamp(220px,17vw,300px);
+      transform:translateX(-50%);
       font-family:var(--sans);
-      font-size:14px;
-      font-weight:500;
-      letter-spacing:.01em;
-      fill:var(--stone-500);
+      font-size:clamp(17px,1.18vw,21px);
+      font-weight:600;
+      line-height:1.3;
+      letter-spacing:.005em;
+      color:#aaa7a1;
+      text-align:center;
+      white-space:nowrap;
+      pointer-events:auto;
+      user-select:text;
+      cursor:text;
     }
 
     @media (max-width:1100px){
@@ -136,8 +147,8 @@
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
           '</g>' +
-          '<text class="cost-rise-caption-text" x="58" y="392" text-anchor="middle">estimated total cost of treatment</text>' +
         '</svg>' +
+        '<div class="cost-rise-caption">estimated total cost of treatment</div>' +
       '</div>';
     s2.appendChild(costRise);
   }
