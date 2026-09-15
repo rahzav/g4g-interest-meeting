@@ -65,19 +65,19 @@
   #s3 .s3-photo-panel-sign{
     width:22%;
     left:39%;
-    top:0;
+    top:-14px;
     z-index:3;
   }
   #s3 .s3-photo-panel-community{
     width:32%;
-    left:7.4%;
-    top:280px;
+    left:calc(7% + 10px);
+    top:261px;
     z-index:2;
   }
   #s3 .s3-photo-panel-fair{
     width:25%;
-    left:60.5%;
-    top:280px;
+    left:calc(61% - 10px);
+    top:261px;
     z-index:2;
   }
 
