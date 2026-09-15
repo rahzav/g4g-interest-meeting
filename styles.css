@@ -1367,3 +1367,33 @@
   .spring-donation-label { font-size: clamp(3.8rem, 17vw, 5.4rem); }
   .spring-donation-card img { width: min(78vw, 390px); }
 }
+
+
+/* Fullscreen alignment corrections for Slide 4 and the donation reveal. */
+#spring-snapshot {
+  padding: 0 !important;
+}
+#spring-snapshot .spring-shell {
+  width: min(1940px, 96vw);
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+#spring-snapshot .spring-donation {
+  left: 50%;
+  top: 50%;
+}
+
+@media (min-width: 1200px) {
+  #s4 .s4-pillars:has(.s4-pillar[data-pillar="0"].is-center) .s4-pillar[data-pillar="2"],
+  #s4 .s4-pillars:has(.s4-pillar[data-pillar="1"].is-center) .s4-pillar[data-pillar="0"],
+  #s4 .s4-pillars:has(.s4-pillar[data-pillar="2"].is-center) .s4-pillar[data-pillar="1"] {
+    --s4-x: -410px !important;
+  }
+
+  #s4 .s4-pillars:has(.s4-pillar[data-pillar="0"].is-center) .s4-pillar[data-pillar="1"],
+  #s4 .s4-pillars:has(.s4-pillar[data-pillar="1"].is-center) .s4-pillar[data-pillar="2"],
+  #s4 .s4-pillars:has(.s4-pillar[data-pillar="2"].is-center) .s4-pillar[data-pillar="0"] {
+    --s4-x: 410px !important;
+  }
+}
