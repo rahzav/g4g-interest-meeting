@@ -144,7 +144,7 @@
     costRise.innerHTML =
       '<div class="cost-rise-stage">' +
         '<svg class="cost-rise-svg" viewBox="0 0 640 420" aria-hidden="true">' +
-          '<path class="cost-rise-line" d="M58 366 L578 42"></path>' +
+          '<path class="cost-rise-line" d="M124 366 L548 42"></path>' +
           '<g class="cost-rise-head-wrap" opacity="0">' +
             '<path class="cost-rise-head" d="M58 366 L58 366 L58 366 Z"></path>' +
           '</g>' +
