@@ -628,3 +628,218 @@
   #s4 .s4-pillar.is-center{font-size:1.18rem!important;}
   #s4 .s4-pillar:not(.is-center){--s4-scale:.5!important;}
 }
+
+/* Slide 4 exit fade and Slide 5 leadership split. */
+#s4.is-exiting .s4-intro,
+#s4.is-exiting .s4-pillars{
+  opacity:0!important;
+  transition:opacity 420ms ease!important;
+}
+
+/* ================= SLIDE 5 : MARKETING, CAMPAIGNS & FINANCE ================= */
+#s5{
+  padding:clamp(4.8rem,7vh,6.4rem) clamp(3.5rem,6vw,7rem) clamp(3.5rem,5vh,5rem)!important;
+  justify-content:flex-start!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(circle at 15% 95%,rgba(200,16,46,.06),transparent 30%),
+    #f4f2ef!important;
+}
+#s5 .s5-shell{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:clamp(1.7rem,3.4vh,2.8rem);
+}
+#s5 .s5-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:2rem;
+}
+#s5 .s5-header .eyebrow{
+  align-self:flex-start;
+  margin-top:.55rem;
+  color:var(--scarlet);
+  opacity:0;
+  transform:translateY(12px);
+}
+#s5 .s5-header .display{
+  margin:0;
+  max-width:none;
+  font-size:clamp(3.2rem,6.5vw,6.3rem);
+  line-height:.84;
+  letter-spacing:-.06em;
+  text-align:right;
+  color:var(--ink);
+  opacity:0;
+  transform:translateY(18px);
+}
+#s5 .s5-team-grid{
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(0,1.62fr) minmax(310px,.88fr);
+  gap:clamp(1.2rem,2vw,2rem);
+}
+#s5 .s5-team{
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  border:1px solid rgba(24,23,22,.13);
+  opacity:0;
+  transform:translateY(24px);
+}
+#s5 .s5-team-marketing{
+  display:grid;
+  grid-template-columns:minmax(210px,.78fr) minmax(0,1.55fr);
+  gap:clamp(1.5rem,2.5vw,2.8rem);
+  padding:clamp(1.6rem,2.7vw,2.7rem);
+  background:rgba(255,255,255,.72);
+}
+#s5 .s5-team-finance{
+  display:flex;
+  flex-direction:column;
+  padding:clamp(1.6rem,2.7vw,2.7rem);
+  background:#111214;
+  color:#f6f5f2;
+  border-color:#111214;
+}
+#s5 .s5-team-heading{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:0;
+}
+#s5 .s5-team-index{
+  font-family:var(--sans);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--scarlet);
+}
+#s5 .s5-team-heading h3{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(2.1rem,4vw,4rem);
+  font-weight:650;
+  line-height:.92;
+  letter-spacing:-.045em;
+}
+#s5 .s5-team-heading h3 em{
+  color:var(--scarlet);
+  font-weight:500;
+}
+#s5 .s5-member-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-content:center;
+  gap:clamp(.65rem,1.3vh,1rem) clamp(.8rem,1.3vw,1.2rem);
+}
+#s5 .s5-member{
+  display:flex;
+  align-items:center;
+  gap:clamp(.7rem,1vw,1rem);
+  min-width:0;
+  padding:clamp(.75rem,1.2vh,1rem);
+  border-top:1px solid rgba(24,23,22,.14);
+  opacity:0;
+  transform:translateX(-12px);
+}
+#s5 .s5-member:nth-child(5){grid-column:1/-1;}
+#s5 .s5-initial{
+  flex:0 0 auto;
+  width:clamp(2.65rem,3.5vw,3.5rem);
+  height:clamp(2.65rem,3.5vw,3.5rem);
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--scarlet);
+  color:#fff;
+  font-family:var(--sans);
+  font-size:clamp(.68rem,.85vw,.82rem);
+  font-weight:700;
+  letter-spacing:.05em;
+}
+#s5 .s5-member h4,
+#s5 .s5-finance-focus h4{
+  margin:0;
+  font-family:var(--sans);
+  font-size:clamp(.92rem,1.15vw,1.12rem);
+  font-weight:700;
+  line-height:1.15;
+}
+#s5 .s5-member p,
+#s5 .s5-finance-focus p{
+  margin:.24rem 0 0;
+  font-family:var(--sans);
+  font-size:clamp(.72rem,.86vw,.84rem);
+  color:var(--stone-600);
+}
+#s5 .s5-team-finance .s5-team-index{color:#ef4962;}
+#s5 .s5-team-finance .s5-team-heading h3{
+  font-size:clamp(2.8rem,5vw,5rem);
+  color:#f6f5f2;
+}
+#s5 .s5-finance-focus{
+  margin:auto 0;
+  display:flex;
+  align-items:center;
+  gap:clamp(1rem,1.6vw,1.5rem);
+  opacity:0;
+  transform:translateY(14px);
+}
+#s5 .s5-finance-focus .s5-initial{
+  width:clamp(5.2rem,7vw,7rem);
+  height:clamp(5.2rem,7vw,7rem);
+  font-size:clamp(1rem,1.5vw,1.35rem);
+  box-shadow:0 0 42px rgba(200,16,46,.25);
+}
+#s5 .s5-finance-focus h4{font-size:clamp(1.35rem,2vw,1.9rem);}
+#s5 .s5-finance-focus p{color:#a9a6a1;font-size:clamp(.8rem,1vw,.95rem);}
+#s5 .s5-finance-line{
+  width:0;
+  height:2px;
+  background:var(--scarlet);
+  margin-bottom:clamp(1rem,1.8vh,1.4rem);
+}
+#s5 .s5-team-note{
+  margin:0;
+  max-width:390px;
+  font-family:var(--sans);
+  font-size:clamp(.8rem,1vw,.95rem);
+  line-height:1.5;
+  color:#a9a6a1;
+  opacity:0;
+}
+#s5.active .s5-header .eyebrow{animation:s5Rise 600ms ease 120ms forwards;}
+#s5.active .s5-header .display{animation:s5Rise 750ms cubic-bezier(.16,1,.3,1) 180ms forwards;}
+#s5.active .s5-team-marketing{animation:s5Rise 760ms cubic-bezier(.16,1,.3,1) 360ms forwards;}
+#s5.active .s5-team-finance{animation:s5Rise 760ms cubic-bezier(.16,1,.3,1) 470ms forwards;}
+#s5.active .s5-member{animation:s5MemberIn 580ms cubic-bezier(.16,1,.3,1) forwards;}
+#s5.active .s5-member:nth-child(1){animation-delay:650ms;}
+#s5.active .s5-member:nth-child(2){animation-delay:730ms;}
+#s5.active .s5-member:nth-child(3){animation-delay:810ms;}
+#s5.active .s5-member:nth-child(4){animation-delay:890ms;}
+#s5.active .s5-member:nth-child(5){animation-delay:970ms;}
+#s5.active .s5-finance-focus{animation:s5Rise 650ms cubic-bezier(.16,1,.3,1) 760ms forwards;}
+#s5.active .s5-finance-line{animation:s5Line 700ms cubic-bezier(.16,1,.3,1) 950ms forwards;}
+#s5.active .s5-team-note{animation:s5Fade 550ms ease 1080ms forwards;}
+@keyframes s5Rise{to{opacity:1;transform:none;}}
+@keyframes s5MemberIn{to{opacity:1;transform:none;}}
+@keyframes s5Line{to{width:100%;}}
+@keyframes s5Fade{to{opacity:1;}}
+@media(max-width:900px){
+  #s5{padding:4.8rem 2rem 3rem!important;overflow-y:auto!important;}
+  #s5 .s5-header{align-items:flex-start;}
+  #s5 .s5-header .display{font-size:clamp(2.8rem,7.8vw,4.5rem);}
+  #s5 .s5-team-grid{grid-template-columns:1fr;grid-template-rows:auto auto;}
+  #s5 .s5-team-marketing{grid-template-columns:180px 1fr;}
+}
+@media(max-width:620px){
+  #s5 .s5-header{display:block;}
+  #s5 .s5-header .display{text-align:left;margin-top:.7rem;}
+  #s5 .s5-team-marketing{grid-template-columns:1fr;}
+  #s5 .s5-team-heading{gap:1.2rem;}
+  #s5 .s5-member-list{grid-template-columns:1fr 1fr;}
+}
