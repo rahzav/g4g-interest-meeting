@@ -509,7 +509,7 @@
   animation:s4CleanFade 850ms cubic-bezier(.16,1,.3,1) 120ms forwards!important;
 }
 #s4.active:not(.pillars-on) .s4-tagline{
-  animation:s4CleanType 2600ms steps(55,end) 700ms forwards,s4CleanCaret 650ms step-end 700ms 5!important;
+  animation:s4CleanType 2600ms steps(55,end) 700ms forwards,s4CleanCaret 650ms step-end 700ms 4 forwards!important;
 }
 #s4.pillars-on .s4-intro{
   opacity:1!important;
@@ -575,7 +575,7 @@
 #s4 .s4-pillars:has(.s4-pillar[data-pillar="2"].is-center) .s4-pillar[data-pillar="0"]{--s4-x:clamp(255px,25vw,350px)!important;--s4-scale:.62!important;}
 @keyframes s4CleanFade{to{opacity:1;transform:none;filter:none;}}
 @keyframes s4CleanType{from{width:0;}to{width:min(88vw,61ch);}}
-@keyframes s4CleanCaret{50%{border-right-color:transparent;}}
+@keyframes s4CleanCaret{0%,49%{border-right-color:rgba(246,245,242,.72);}50%,100%{border-right-color:transparent;}}
 @media(max-width:700px){
   #s4.pillars-on .s4-intro{transform:translateY(calc(-50vh + 4.3rem))!important;}
   #s4.pillars-on .s4-wordmark{font-size:clamp(2rem,9vw,3rem)!important;}
