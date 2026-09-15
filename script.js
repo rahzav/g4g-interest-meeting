@@ -225,27 +225,35 @@
   }
   function runSpringTotal(){
     var el = document.querySelector('#spring-snapshot [data-spring-total]');
-    if(!el) return;
+    var emblem = document.querySelector('#spring-snapshot .spring-emblem-stage');
+    if(!el || !emblem) return;
     var target = parseInt(el.getAttribute('data-spring-total'),10) || 500;
+
+    function render(progress){
+      var eased = 1 - Math.pow(1 - progress,4);
+      el.textContent = Math.round(target * eased);
+      emblem.style.setProperty('--emblem-fill-top',(100 - eased * 100).toFixed(2) + '%');
+    }
 
     if(reduced){
       el.textContent = target;
+      emblem.style.setProperty('--emblem-fill-top','0%');
       return;
     }
 
-    el.textContent = '0';
+    render(0);
     var startTime = null;
     var duration = 2300;
 
     function step(ts){
       if(!startTime) startTime = ts;
       var progress = Math.min((ts - startTime) / duration,1);
-      var eased = 1 - Math.pow(1 - progress,4);
-      el.textContent = Math.round(target * eased);
+      render(progress);
       if(progress < 1 && slides[4].classList.contains('active')){
         requestAnimationFrame(step);
       }else if(progress >= 1){
         el.textContent = target;
+        emblem.style.setProperty('--emblem-fill-top','0%');
       }
     }
 
