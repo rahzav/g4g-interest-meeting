@@ -153,6 +153,7 @@
   var current = 0;
   var pillarStep = -1;
   var s4TypeRun = 0;
+  var s4ResetTimer = null;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach(function(s, i){
@@ -171,11 +172,20 @@
     if(current === 3 && i !== 3){
       var s4Leaving = document.getElementById('s4');
       if(s4Leaving){
-        s4Leaving.classList.remove('pillars-on');
         var oldTagline = s4Leaving.querySelector('.s4-tagline');
         if(oldTagline) oldTagline.classList.remove('is-typing');
       }
       s4TypeRun++;
+      pillarStep = -1;
+      clearTimeout(s4ResetTimer);
+      s4ResetTimer = setTimeout(function(){
+        if(current !== 3 && s4Leaving) s4Leaving.classList.remove('pillars-on');
+      },950);
+    }
+    if(i === 3){
+      clearTimeout(s4ResetTimer);
+      var s4Entering = document.getElementById('s4');
+      if(s4Entering) s4Entering.classList.remove('pillars-on');
       pillarStep = -1;
     }
     current = i;
