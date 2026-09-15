@@ -1391,3 +1391,14 @@
     --s4-x: 410px !important;
   }
 }
+
+/* Use the same Inter family as the Slide 2 definition across all slide titles. */
+h1.display,
+h2.display,
+#s4 .s4-wordmark,
+.spring-title,
+#s6 .fall-plans-title,
+#s6 .fall-plans-title .fall-title-projects,
+.spring-donation-label {
+  font-family: 'Inter', var(--sans) !important;
+}
