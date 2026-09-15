@@ -905,152 +905,230 @@
 }
 
 /* Spring semester fundraising snapshot. */
-#spring-snapshot{
-  padding:clamp(6.4rem,10vh,8.8rem) clamp(3.5rem,6vw,7rem) clamp(3.8rem,6vh,5.5rem)!important;
-  display:flex!important;
-  align-items:flex-start!important;
-  justify-content:center!important;
-  overflow:hidden!important;
+#spring-snapshot {
+  --spring-bg: #f4f2ef;
+  --spring-ink: #151515;
+  --spring-muted: #77726e;
+  --spring-red: #c8102e;
   background:
-    radial-gradient(circle at 27% 62%,rgba(200,16,46,.045),transparent 29%),
-    #f4f2ef!important;
+    radial-gradient(circle at 64% 54%, rgba(200,16,46,.07), transparent 30%),
+    linear-gradient(180deg, #f7f5f2 0%, var(--spring-bg) 100%);
+  color: var(--spring-ink);
+  overflow: hidden;
 }
-#spring-snapshot .spring-shell{
-  width:100%;
-  height:100%;
-  display:grid;
-  grid-template-rows:auto 1fr;
-  gap:clamp(2.3rem,4.5vh,4rem);
+
+#spring-snapshot::before {
+  content: '';
+  position: absolute;
+  width: min(50vw, 760px);
+  aspect-ratio: 1;
+  left: 54%;
+  top: 54%;
+  transform: translate(-50%,-50%);
+  border: 1px solid rgba(200,16,46,.08);
+  border-radius: 50%;
+  pointer-events: none;
 }
-#spring-snapshot .spring-header{
-  display:block;
-  min-height:0;
+
+.spring-shell {
+  position: relative;
+  z-index: 2;
+  width: min(1780px, 90vw);
+  height: 100%;
+  margin: 0 auto;
+  padding: clamp(7.2rem, 11vh, 9.2rem) 0 clamp(5rem, 7vh, 6.5rem);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: clamp(2.8rem, 4.2vh, 4.4rem);
 }
-#spring-snapshot .spring-title{
-  margin:0;
-  font-family:var(--serif);
-  font-size:clamp(3.4rem,6.4vw,6.4rem);
-  font-weight:650;
-  line-height:.88;
-  letter-spacing:-.058em;
-  color:#171716;
-  opacity:0;
-  transform:translateY(18px);
+
+.spring-header { align-self: start; }
+
+.spring-title {
+  margin: 0;
+  color: var(--spring-ink);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(4.4rem, 7.8vw, 8.4rem);
+  font-weight: 650;
+  line-height: .88;
+  letter-spacing: -.055em;
 }
-#spring-snapshot .spring-layout{
-  min-height:0;
-  display:grid;
-  grid-template-columns:minmax(470px,1fr) minmax(490px,.9fr);
-  align-items:center;
-  gap:clamp(4rem,7vw,8rem);
+
+.spring-layout {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(420px, .82fr) minmax(650px, 1.18fr);
+  align-items: center;
+  gap: clamp(4.5rem, 7vw, 8.5rem);
+  padding: 0 clamp(1rem, 2vw, 2.5rem) clamp(1.5rem, 3vh, 3rem);
 }
-#spring-snapshot .spring-emblem-stage{
-  --emblem-fill-top:100%;
-  position:relative;
-  width:min(44vw,760px);
-  aspect-ratio:1882/836;
-  justify-self:center;
-  opacity:0;
-  transform:translateY(18px);
-  filter:drop-shadow(0 20px 38px rgba(31,28,27,.08));
+
+.spring-emblem-stage {
+  --emblem-fill-top: 100%;
+  position: relative;
+  width: min(100%, 650px);
+  aspect-ratio: 1882 / 836;
+  justify-self: end;
+  filter: drop-shadow(0 24px 38px rgba(30,24,22,.10));
 }
-#spring-snapshot .spring-emblem-base,
-#spring-snapshot .spring-emblem-fill,
-#spring-snapshot .spring-emblem-fill img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
+
+.spring-emblem-stage::after {
+  content: '';
+  position: absolute;
+  inset: -13% -8%;
+  border: 1px solid rgba(200,16,46,.12);
+  border-radius: 50%;
+  transform: scale(.92);
+  opacity: 0;
 }
-#spring-snapshot .spring-emblem-base{
-  display:block;
-  filter:grayscale(1) saturate(0) brightness(.72);
-  opacity:.22;
+
+#spring-snapshot.active .spring-emblem-stage::after {
+  animation: springHalo 1800ms cubic-bezier(.2,.75,.25,1) 420ms both;
 }
-#spring-snapshot .spring-emblem-fill{
-  overflow:hidden;
-  clip-path:inset(var(--emblem-fill-top) 0 0 0);
-  will-change:clip-path;
+
+.spring-emblem-base,
+.spring-emblem-fill,
+.spring-emblem-fill img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-#spring-snapshot .spring-emblem-fill img{
-  display:block;
-  object-fit:contain;
+
+.spring-emblem-base {
+  filter: grayscale(1);
+  opacity: .16;
 }
-#spring-snapshot .spring-impact{
-  position:relative;
-  min-width:0;
-  color:#171716;
-  opacity:0;
-  transform:translateY(20px);
+
+.spring-emblem-fill {
+  overflow: hidden;
+  clip-path: inset(var(--emblem-fill-top) 0 0 0);
+  will-change: clip-path;
 }
-#spring-snapshot .spring-raised{
-  margin:0 0 clamp(.55rem,1vh,.85rem);
-  font-family:var(--sans);
-  font-size:clamp(.8rem,1.05vw,1rem);
-  font-weight:700;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--scarlet);
+
+.spring-impact {
+  position: relative;
+  width: min(100%, 880px);
+  align-self: center;
+  padding: clamp(1rem, 2vh, 2rem) 0;
 }
-#spring-snapshot .spring-total{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  white-space:nowrap;
-  font-family:var(--serif);
-  font-size:clamp(7rem,12.5vw,13rem);
-  font-weight:650;
-  line-height:.7;
-  letter-spacing:-.075em;
-  font-variant-numeric:tabular-nums;
+
+.spring-impact::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 92%;
+  height: 145%;
+  left: -8%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: radial-gradient(ellipse, rgba(200,16,46,.10), transparent 68%);
+  filter: blur(10px);
 }
-#spring-snapshot .spring-dollar{
-  margin-right:.025em;
-  font-size:.5em;
-  line-height:1;
-  letter-spacing:0;
+
+.spring-raised {
+  margin: 0 0 clamp(.35rem, .8vh, .7rem) .18em;
+  color: var(--spring-red);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.35vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: .25em;
+  text-transform: uppercase;
 }
-#spring-snapshot .spring-plus{
-  margin-left:.035em;
-  font-size:.95em;
-  line-height:.7;
-  letter-spacing:0;
-  color:var(--scarlet);
-  opacity:0;
-  transform:scale(.3) rotate(-12deg);
-  transform-origin:center;
+
+.spring-total {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+  color: var(--spring-ink);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(9rem, 15vw, 16rem);
+  font-weight: 620;
+  line-height: .72;
+  letter-spacing: -.075em;
+  font-variant-numeric: tabular-nums lining-nums;
 }
-#spring-snapshot .spring-purpose{
-  margin-top:clamp(1.25rem,2.4vh,1.8rem);
-  font-family:var(--sans);
-  font-size:clamp(1rem,1.35vw,1.22rem);
-  font-weight:600;
-  line-height:1.35;
-  color:#4f4c48;
+
+.spring-dollar {
+  font-size: .47em;
+  margin-right: .025em;
+  letter-spacing: -.03em;
 }
-#spring-snapshot .spring-detail{
-  margin-top:clamp(.8rem,1.6vh,1.15rem);
-  font-family:var(--sans);
-  font-size:clamp(.76rem,.92vw,.88rem);
-  font-weight:500;
-  line-height:1.4;
-  letter-spacing:.012em;
-  color:#99958f;
-  opacity:0;
-  transform:translateY(8px);
+
+.spring-plus {
+  display: inline-block;
+  margin-left: .035em;
+  color: var(--spring-red);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: .64em;
+  font-weight: 470;
+  letter-spacing: 0;
+  opacity: 1;
+  transform: none;
 }
-#spring-snapshot.active .spring-title{animation:springRise 700ms cubic-bezier(.16,1,.3,1) 100ms forwards;}
-#spring-snapshot.active .spring-emblem-stage{animation:springRise 720ms cubic-bezier(.16,1,.3,1) 320ms forwards;}
-#spring-snapshot.active .spring-impact{animation:springRise 760ms cubic-bezier(.16,1,.3,1) 420ms forwards;}
-#spring-snapshot.active .spring-plus{animation:springPlusIn 520ms cubic-bezier(.16,1,.3,1) 2950ms forwards;}
-#spring-snapshot.active .spring-detail{animation:springRise 600ms ease 3050ms forwards;}
-@keyframes springRise{to{opacity:1;transform:none;}}
-@keyframes springPlusIn{to{opacity:1;transform:none;}}
-@media(max-width:980px){
-  #spring-snapshot{padding:5.8rem 2.2rem 3.2rem!important;}
-  #spring-snapshot .spring-shell{gap:1.7rem;}
-  #spring-snapshot .spring-layout{grid-template-columns:1fr;grid-template-rows:1fr auto;gap:1.5rem;}
-  #spring-snapshot .spring-emblem-stage{width:min(84vw,620px);}
-  #spring-snapshot .spring-impact{text-align:center;}
-  #spring-snapshot .spring-total{justify-content:center;font-size:clamp(6.5rem,20vw,10rem);}
+
+.spring-total-rule {
+  width: 0;
+  max-width: 760px;
+  height: 3px;
+  margin: clamp(1.5rem, 2.4vh, 2.3rem) 0 clamp(1.1rem, 1.8vh, 1.7rem);
+  background: linear-gradient(90deg, var(--spring-red) 0 76%, rgba(200,16,46,.12) 76% 100%);
+  transform-origin: left center;
+}
+
+#spring-snapshot.active .spring-total-rule {
+  animation: springRule 1800ms cubic-bezier(.2,.75,.25,1) 420ms both;
+}
+
+.spring-purpose {
+  color: var(--spring-ink);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.18rem, 1.55vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.spring-detail {
+  margin-top: clamp(.75rem, 1.2vh, 1.1rem);
+  color: var(--spring-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(.9rem, 1.05vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+
+@keyframes springRule {
+  from { width: 0; opacity: 0; }
+  to { width: 100%; opacity: 1; }
+}
+
+@keyframes springHalo {
+  from { opacity: 0; transform: scale(.84); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 1000px) {
+  .spring-shell {
+    padding-top: clamp(6.3rem, 9vh, 7.4rem);
+    gap: 2rem;
+  }
+  .spring-layout {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    text-align: center;
+  }
+  .spring-emblem-stage {
+    width: min(60vw, 460px);
+    justify-self: center;
+  }
+  .spring-impact {
+    justify-self: center;
+  }
+  .spring-total {
+    justify-content: center;
+    font-size: clamp(6.8rem, 21vw, 11rem);
+  }
+  .spring-raised { margin-left: 0; }
+  .spring-total-rule { margin-left: auto; margin-right: auto; }
 }
