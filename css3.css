@@ -15,7 +15,7 @@
   #s3 h2.display{
     max-width:1100px;
     margin:0;
-    font-family:var(--serif);
+    font-family:Georgia,'Times New Roman',serif;
     font-size:clamp(2.2rem,4.15vw,4.3rem);
     font-weight:700;
     line-height:1.04;
@@ -34,46 +34,52 @@
     transform:translateY(16px);
   }
   #s3.active .s3-intro{animation:riseIn 700ms cubic-bezier(.2,.8,.2,1) 420ms forwards;}
-  #s3 .s3-pillars{
-    width:min(100%,1180px);
+  #s3 .pillars{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:clamp(1.8rem,3.5vw,4rem);
-    margin-top:clamp(2.4rem,4.5vw,4rem);
+    gap:clamp(1.4rem,2.6vw,2.4rem);
+    width:min(100%,1100px);
+    margin-top:clamp(2rem,4vw,3rem);
+  }
+  #s3 .pillar{
     opacity:0;
-    transform:translateY(18px);
+    transform:translateY(26px);
+    transition:transform 260ms ease,box-shadow 260ms ease;
   }
-  #s3.active .s3-pillars{animation:riseIn 700ms cubic-bezier(.2,.8,.2,1) 650ms forwards;}
-  #s3 .s3-pillar{
-    padding-top:1.25rem;
-    border-top:1px solid var(--stone-300);
+  #s3.active .pillar:nth-child(1){animation:riseIn 650ms cubic-bezier(.2,.8,.2,1) 500ms forwards;}
+  #s3.active .pillar:nth-child(2){animation:riseIn 650ms cubic-bezier(.2,.8,.2,1) 680ms forwards;}
+  #s3.active .pillar:nth-child(3){animation:riseIn 650ms cubic-bezier(.2,.8,.2,1) 860ms forwards;}
+  #s3 .pillar:hover{transform:translateY(-6px);}
+  #s3 .pillar-mark{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:1.1rem;
+    background:var(--charcoal);
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:1.7rem;
+    font-weight:600;
+    color:var(--white);
   }
-  #s3 .s3-pillar-number{
-    font-family:var(--sans);
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:.08em;
-    color:var(--stone-500);
+  #s3 .pillar:nth-child(2) .pillar-mark{background:var(--scarlet);}
+  #s3 .pillar h3{
+    margin:0 0 .55rem;
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:1.5rem;
+    font-weight:600;
   }
-  #s3 .s3-pillar h3{
-    margin:.65rem 0 .55rem;
-    font-family:var(--serif);
-    font-size:clamp(1.45rem,2vw,2rem);
-    font-weight:700;
-    letter-spacing:-.02em;
-    color:var(--charcoal);
-  }
-  #s3 .s3-pillar p{
+  #s3 .pillar p{
     margin:0;
-    font-family:var(--sans);
-    font-size:clamp(.86rem,1vw,.98rem);
-    font-weight:500;
-    line-height:1.5;
+    font-size:.96rem;
+    line-height:1.55;
     color:var(--stone-600);
   }
   @media (max-width:900px){
     #s3{overflow-y:auto;}
-    #s3 .s3-pillars{grid-template-columns:1fr;gap:1.4rem;}
+    #s3 .pillars{grid-template-columns:1fr;gap:1.4rem;}
   }
 
   /* ================= SLIDE 5 : DIFFERENT ================= */
