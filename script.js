@@ -132,7 +132,7 @@
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
           '</g>' +
-          '<text class="cost-rise-caption-text" x="58" y="399" text-anchor="middle">estimated total cost of treatment</text>' +
+          '<text class="cost-rise-caption-text" x="38" y="392" text-anchor="middle">estimated total cost of treatment</text>' +
         '</svg>' +
       '</div>';
     s2.appendChild(costRise);
