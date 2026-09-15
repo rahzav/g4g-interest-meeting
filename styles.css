@@ -603,3 +603,28 @@
 @media(prefers-reduced-motion:reduce){
   #s4 .s4-wordmark,#s4 .s4-tagline{opacity:1!important;transform:none!important;filter:none!important;}\n  #s4 .s4-tagline{width:min(88vw,61ch)!important;border-right-color:transparent!important;}
 }
+
+/* Slide 4 pillar scale emphasis. */
+#s4 .s4-pillar,
+#s4 .s4-pillar.is-center{
+  width:clamp(300px,29vw,420px)!important;
+  height:clamp(300px,29vw,420px)!important;
+}
+#s4 .s4-pillar.is-center{
+  font-size:clamp(1.6rem,2.5vw,2.25rem)!important;
+  border-width:2px!important;
+  box-shadow:0 0 100px rgba(200,16,46,.3),inset 0 0 72px rgba(200,16,46,.16)!important;
+}
+#s4 .s4-pillar:not(.is-center){
+  --s4-scale:.64!important;
+  opacity:.46!important;
+}
+@media(max-width:700px){
+  #s4 .s4-pillar,
+  #s4 .s4-pillar.is-center{
+    width:190px!important;
+    height:190px!important;
+  }
+  #s4 .s4-pillar.is-center{font-size:1.18rem!important;}
+  #s4 .s4-pillar:not(.is-center){--s4-scale:.5!important;}
+}
