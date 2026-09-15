@@ -26,7 +26,11 @@
       transform:translateY(-42%);
       z-index:3;
       pointer-events:none;
+      opacity:0;
+      transition:opacity 700ms cubic-bezier(.2,.8,.2,1);
+      will-change:opacity;
     }
+    #s2.active .cost-rise{opacity:1;}
     #s2 .cost-rise-stage{
       position:relative;
       height:clamp(345px,49vh,485px);
