@@ -364,19 +364,6 @@
     }, 520);
   }
 
-  var sealDrawn = false;
-  var origGoTo = goTo;
-  goTo = function(i){
-    origGoTo(i);
-    if(slides[i].id === 's3' && !sealDrawn){
-      sealDrawn = true;
-      var outer = document.getElementById('seal-ring-outer');
-      var inner = document.getElementById('seal-ring-inner');
-      setTimeout(function(){ outer.style.transition = 'stroke-dashoffset 1100ms cubic-bezier(.2,.8,.2,1)'; outer.style.strokeDashoffset = '0'; }, 250);
-      setTimeout(function(){ inner.style.transition = 'stroke-dashoffset 900ms cubic-bezier(.2,.8,.2,1)'; inner.style.strokeDashoffset = '0'; }, 550);
-    }
-  };
-
   try{
     var qr = qrcode(4, 'M');
     qr.addData('https://rutgersg4g.org/committee-application');
