@@ -208,6 +208,9 @@
     if(i === 3){
       runSlide4Typing();
     }
+    if(i === 4){
+      runSpringTotal();
+    }
     if(i === 1){
       runCounters();
       runCostRise();
@@ -220,6 +223,37 @@
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === slides.length - 1;
   }
+  function runSpringTotal(){
+    var el = document.querySelector('#spring-snapshot [data-spring-total]');
+    if(!el) return;
+    var target = parseInt(el.getAttribute('data-spring-total'),10) || 500;
+
+    if(reduced){
+      el.textContent = target;
+      return;
+    }
+
+    el.textContent = '0';
+    var startTime = null;
+    var duration = 2300;
+
+    function step(ts){
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration,1);
+      var eased = 1 - Math.pow(1 - progress,4);
+      el.textContent = Math.round(target * eased);
+      if(progress < 1 && slides[4].classList.contains('active')){
+        requestAnimationFrame(step);
+      }else if(progress >= 1){
+        el.textContent = target;
+      }
+    }
+
+    setTimeout(function(){
+      if(slides[4].classList.contains('active')) requestAnimationFrame(step);
+    },650);
+  }
+
   function runSlide4Typing(){
     var line = document.querySelector('#s4 .s4-tagline');
     if(!line) return;
