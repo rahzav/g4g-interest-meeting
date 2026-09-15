@@ -36,6 +36,14 @@
 }
 #s6 .fall-plans-title span{display:block;}
 #s6 .fall-plans-title span + span{margin-top:.16em;}
+#s6 .fall-plans-title .fall-title-j{
+  display:inline;
+  margin:0;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:.94em;
+  font-weight:700;
+  letter-spacing:-.035em;
+}
 
 #s6 .fall-plans-list{
   grid-column:1;
@@ -110,6 +118,7 @@
   grid-column:2;
   grid-row:2;
   position:relative;
+  top:clamp(-1.4rem,-1.7vh,-1rem);
   align-self:center;
   justify-self:end;
   width:min(40vw,620px);
@@ -142,13 +151,13 @@
 #s6 .fall-photo-bottom img{object-position:50% 45%;}
 #s6 .fall-collage-caption{
   position:absolute;
-  left:3%;
-  bottom:3%;
+  left:8%;
+  bottom:5%;
   z-index:5;
   padding:.85rem 1.15rem .95rem;
   background:var(--scarlet);
   color:var(--white);
-  transform:rotate(-2.5deg);
+  transform:translateY(50%) rotate(-2.5deg);
   box-shadow:0 12px 30px rgba(0,0,0,.3);
   font-family:var(--sans);
 }
