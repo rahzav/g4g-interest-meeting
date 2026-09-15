@@ -227,34 +227,49 @@
 
   function runGfgImpact(){
     var el = document.querySelector('#s3 [data-impact-count]');
-    if(!el) return;
+    var stage = document.querySelector('#s3 .s3-bar-stage');
+    var bar = document.querySelector('#s3 .s3-bar-fill');
+    var valueWrap = document.querySelector('#s3 .s3-bar-value-wrap');
+    if(!el || !stage || !bar || !valueWrap) return;
 
     var target = parseInt(el.getAttribute('data-impact-count'), 10);
+    var stageHeight = stage.getBoundingClientRect().height;
+    var maxHeight = Math.round(stageHeight * 0.58);
+    var base = parseFloat(window.getComputedStyle(bar).bottom) || 32;
+    var valueGap = 14;
+
+    function render(progress){
+      var height = maxHeight * progress;
+      bar.style.height = height.toFixed(2) + 'px';
+      valueWrap.style.bottom = (base + height + valueGap).toFixed(2) + 'px';
+      el.textContent = Math.round(target * progress);
+    }
+
     if(reduced){
-      el.textContent = target;
+      render(1);
       return;
     }
 
-    el.textContent = '0';
-    var start = null;
-    var duration = 1650;
+    render(0);
+    var startTime = null;
+    var duration = 3000;
 
     function step(ts){
-      if(!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 4);
-      el.textContent = Math.round(target * eased);
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = progress * progress * (3 - 2 * progress);
+      render(eased);
 
       if(progress < 1 && slides[2].classList.contains('active')){
         requestAnimationFrame(step);
       }else if(progress >= 1){
-        el.textContent = target;
+        render(1);
       }
     }
 
     setTimeout(function(){
       if(slides[2].classList.contains('active')) requestAnimationFrame(step);
-    }, 650);
+    }, 420);
   }
 
   function runCounters(){
