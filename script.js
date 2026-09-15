@@ -151,6 +151,7 @@
   var prevBtn = document.getElementById('prevBtn');
   var nextBtn = document.getElementById('nextBtn');
   var current = 0;
+  var pillarStep = -1;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach(function(s, i){
@@ -166,6 +167,11 @@
 
   function goTo(i){
     if(i < 0 || i >= slides.length || i === current) { updateButtons(); return; }
+    if(current === 3 && i !== 3){
+      var s4Leaving = document.getElementById('s4');
+      if(s4Leaving) s4Leaving.classList.remove('pillars-on');
+      pillarStep = -1;
+    }
     current = i;
     deck.style.transform = 'translateY(-' + (i*100) + 'vh)';
     slides.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
@@ -185,8 +191,36 @@
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === slides.length - 1;
   }
-  function next(){ goTo(current+1); }
-  function prev(){ goTo(current-1); }
+  function updatePillarCarousel(step){
+    var s4 = document.getElementById('s4');
+    if(!s4) return false;
+    var items = Array.prototype.slice.call(s4.querySelectorAll('.s4-pillar'));
+    if(!items.length) return false;
+    pillarStep = step;
+    if(pillarStep < 0){
+      s4.classList.remove('pillars-on');
+      items.forEach(function(item){ item.classList.toggle('is-center', item.getAttribute('data-pillar') === '0'); });
+      return true;
+    }
+    s4.classList.add('pillars-on');
+    var center = pillarStep % items.length;
+    items.forEach(function(item){ item.classList.toggle('is-center', parseInt(item.getAttribute('data-pillar'),10) === center); });
+    return true;
+  }
+  function next(){
+    if(current === 3){
+      if(pillarStep < 0){ updatePillarCarousel(0); return; }
+      if(pillarStep < 2){ updatePillarCarousel(pillarStep + 1); return; }
+    }
+    goTo(current+1);
+  }
+  function prev(){
+    if(current === 3 && pillarStep >= 0){
+      if(pillarStep > 0){ updatePillarCarousel(pillarStep - 1); return; }
+      updatePillarCarousel(-1); return;
+    }
+    goTo(current-1);
+  }
 
   prevBtn.addEventListener('click', prev);
   nextBtn.addEventListener('click', next);
