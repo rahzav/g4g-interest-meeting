@@ -248,6 +248,9 @@
 
     var target = 300;
     var length = path.getTotalLength();
+    var fullHeadLength = 30;
+    var fullHeadHalfWidth = 16;
+    var shaftOverlap = 3;
     path.style.strokeDasharray = length;
     path.style.strokeDashoffset = length;
     head.setAttribute('opacity', '0');
@@ -290,8 +293,9 @@
       var uy = dy / tangentLength;
       var perpendicularX = -uy;
       var perpendicularY = ux;
-      var headLength = 30;
-      var halfWidth = 16;
+      var headScale = Math.min(1, distance / fullHeadLength);
+      var headLength = fullHeadLength * headScale;
+      var halfWidth = fullHeadHalfWidth * headScale;
       var baseX = point.x - ux * headLength;
       var baseY = point.y - uy * headLength;
       var cornerAX = baseX + perpendicularX * halfWidth;
@@ -308,18 +312,23 @@
         ' L' + cornerBX.toFixed(3) + ' ' + cornerBY.toFixed(3) + ' Z'
       );
       valueWrap.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ')');
+      return distance - Math.max(0, headLength - shaftOverlap * headScale);
+    }
+
+    function revealAt(progress){
+      var shaftEnd = placeAt(progress);
+      path.style.strokeDashoffset = length - Math.max(0, shaftEnd);
     }
 
     if(reduced){
-      path.style.strokeDashoffset = '0';
-      placeAt(1);
+      revealAt(1);
       head.setAttribute('opacity', '1');
       valueWrap.setAttribute('opacity', '1');
       valueText.textContent = '$300k+';
       return;
     }
 
-    placeAt(0);
+    revealAt(0);
     var start = null;
     var dur = 3500;
     function step(ts){
@@ -327,8 +336,7 @@
       var p = Math.min((ts-start)/dur, 1);
       var eased = p * p * (3 - 2 * p);
 
-      path.style.strokeDashoffset = length * (1 - eased);
-      placeAt(eased);
+      revealAt(eased);
 
       if(p > .015){
         head.setAttribute('opacity', '1');
@@ -340,8 +348,7 @@
 
       if(p < 1 && slides[1].classList.contains('active')) requestAnimationFrame(step);
       else if(p >= 1){
-        placeAt(1);
-        path.style.strokeDashoffset = '0';
+        revealAt(1);
         head.setAttribute('opacity', '1');
         valueWrap.setAttribute('opacity', '1');
         valueText.textContent = '$300k+';
