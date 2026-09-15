@@ -3,7 +3,7 @@
     justify-content:flex-start;
     align-items:center;
     overflow:hidden;
-    padding:clamp(7.4rem,12vh,9rem) clamp(3.4rem,6vw,7rem) clamp(3.8rem,5.8vh,5.2rem);
+    padding:clamp(8.2rem,13.5vh,9.6rem) clamp(3.4rem,6vw,7rem) clamp(3.8rem,5.8vh,5.2rem);
     background:
       radial-gradient(circle at 7% 92%,rgba(200,16,46,.065),transparent 29%),
       linear-gradient(180deg,#f4f2ef 0%,#efede9 100%);
@@ -21,14 +21,14 @@
     z-index:1;
     width:min(100%,1640px);
     display:grid;
-    grid-template-columns:minmax(520px,.76fr) minmax(670px,1.24fr);
+    grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);
     grid-template-rows:auto 1fr;
     column-gap:clamp(6rem,8vw,9rem);
     align-items:start;
   }
   #s3 .s3-org-header{
     grid-column:1 / -1;
-    margin:0 0 clamp(3rem,5.5vh,4.5rem);
+    margin:0 0 clamp(3.5rem,6.2vh,5rem);
   }
   #s3 h2.display{
     max-width:none;
