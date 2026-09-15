@@ -1,0 +1,158 @@
+/* ================= SLIDE 6 : FALL SEM PLANS & PROJECTS ================= */
+#s6{
+  overflow:hidden;
+  padding:clamp(4.8rem,7.3vh,6.9rem) clamp(4.5rem,7vw,7.5rem) clamp(4rem,6vh,5.6rem);
+  background:
+    radial-gradient(circle at 77% 43%,rgba(200,16,46,.15),transparent 34%),
+    linear-gradient(135deg,#08090a 0%,#0d0e10 56%,#090a0b 100%)!important;
+}
+
+#s6 .fall-plans-shell{
+  width:min(91vw,1500px);
+  height:min(84vh,850px);
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(540px,1.08fr) minmax(440px,.92fr);
+  grid-template-rows:auto 1fr;
+  column-gap:clamp(3.5rem,6vw,7rem);
+  position:relative;
+  z-index:2;
+}
+
+#s6 .fall-plans-header{grid-column:1;align-self:start;}
+#s6 .fall-plans-kicker{
+  color:var(--scarlet);
+  font:700 clamp(.82rem,1vw,1rem)/1 var(--sans);
+  letter-spacing:.19em;
+  text-transform:uppercase;
+  opacity:0;
+  transform:translateY(14px);
+}
+#s6 .fall-plans-title{
+  margin:.7rem 0 0;
+  color:var(--white);
+  font:600 clamp(3.8rem,6.15vw,6.6rem)/.84 var(--serif);
+  letter-spacing:-.065em;
+  opacity:0;
+  transform:translateY(22px);
+}
+#s6 .fall-plans-title span{color:var(--stone-300);font-style:italic;font-weight:400;}
+
+#s6 .fall-plans-list{
+  grid-column:1;
+  align-self:end;
+  display:flex;
+  flex-direction:column;
+  margin-top:clamp(1.65rem,3vh,2.5rem);
+  border-top:1px solid rgba(255,255,255,.16);
+}
+#s6 .fall-plan{
+  display:grid;
+  grid-template-columns:clamp(2.5rem,3.6vw,3.8rem) 1fr;
+  gap:clamp(.65rem,1vw,1rem);
+  align-items:center;
+  min-height:clamp(63px,8.2vh,82px);
+  padding:.55rem .15rem;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  opacity:0;
+  transform:translateX(-28px);
+}
+#s6 .fall-plan-number{
+  align-self:start;
+  padding-top:.34rem;
+  color:var(--scarlet);
+  font:700 clamp(.75rem,.9vw,.92rem)/1 var(--sans);
+  letter-spacing:.08em;
+}
+#s6 .fall-plan-label{
+  display:block;
+  margin-bottom:.18rem;
+  color:var(--stone-500);
+  font:700 clamp(.64rem,.72vw,.75rem)/1 var(--sans);
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+#s6 .fall-plan h3{
+  margin:0;
+  max-width:42ch;
+  color:var(--white);
+  font:500 clamp(1.02rem,1.42vw,1.48rem)/1.18 var(--sans);
+  letter-spacing:-.025em;
+}
+
+#s6 .fall-collage{
+  grid-column:2;
+  grid-row:1 / span 2;
+  position:relative;
+  align-self:center;
+  justify-self:end;
+  width:min(40vw,620px);
+  height:min(75vh,750px);
+  opacity:0;
+  transform:translateX(42px) scale(.97);
+}
+#s6 .fall-collage::before{
+  content:'';
+  position:absolute;
+  inset:7% 2% 5% 8%;
+  border:1px solid rgba(200,16,46,.38);
+  transform:rotate(-2deg);
+  z-index:0;
+}
+#s6 .fall-photo{
+  position:absolute;
+  margin:0;
+  overflow:hidden;
+  background:#151517;
+  border:clamp(6px,.65vw,10px) solid #f3f1ed;
+  box-shadow:0 24px 60px rgba(0,0,0,.42);
+}
+#s6 .fall-photo img{width:100%;height:100%;display:block;object-fit:cover;}
+#s6 .fall-photo-main{left:0;top:12%;width:68%;height:61%;z-index:3;transform:rotate(-3.3deg);}
+#s6 .fall-photo-main img{object-position:52% 50%;}
+#s6 .fall-photo-top{right:1%;top:0;width:43%;height:43%;z-index:2;transform:rotate(4.2deg);}
+#s6 .fall-photo-top img{object-position:50% 46%;}
+#s6 .fall-photo-bottom{right:2%;bottom:4%;width:47%;height:48%;z-index:4;transform:rotate(2.5deg);}
+#s6 .fall-photo-bottom img{object-position:50% 45%;}
+#s6 .fall-collage-caption{
+  position:absolute;
+  left:3%;
+  bottom:3%;
+  z-index:5;
+  padding:.85rem 1.15rem .95rem;
+  background:var(--scarlet);
+  color:var(--white);
+  transform:rotate(-2.5deg);
+  box-shadow:0 12px 30px rgba(0,0,0,.3);
+  font-family:var(--sans);
+}
+#s6 .fall-collage-caption span{display:block;font-size:clamp(.68rem,.78vw,.82rem);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+#s6 .fall-collage-caption b{display:block;margin-top:.12rem;font-size:clamp(1.12rem,1.55vw,1.55rem);letter-spacing:-.035em;}
+
+#s6.active .fall-plans-kicker{animation:fallRise 620ms cubic-bezier(.16,1,.3,1) 120ms forwards;}
+#s6.active .fall-plans-title{animation:fallRise 760ms cubic-bezier(.16,1,.3,1) 220ms forwards;}
+#s6.active .fall-collage{animation:fallCollageIn 900ms cubic-bezier(.16,1,.3,1) 360ms forwards;}
+#s6.active .fall-plan{animation:fallPlanIn 650ms cubic-bezier(.16,1,.3,1) forwards;}
+#s6.active .fall-plan:nth-child(1){animation-delay:500ms;}
+#s6.active .fall-plan:nth-child(2){animation-delay:620ms;}
+#s6.active .fall-plan:nth-child(3){animation-delay:740ms;}
+#s6.active .fall-plan:nth-child(4){animation-delay:860ms;}
+#s6.active .fall-plan:nth-child(5){animation-delay:980ms;}
+
+@keyframes fallRise{to{opacity:1;transform:none;}}
+@keyframes fallPlanIn{to{opacity:1;transform:translateX(0);}}
+@keyframes fallCollageIn{to{opacity:1;transform:none;}}
+
+@media(max-width:1100px){
+  #s6{padding:5.5rem 3rem 3.5rem;overflow-y:auto;}
+  #s6 .fall-plans-shell{height:auto;min-height:820px;grid-template-columns:1fr .78fr;column-gap:2.2rem;}
+  #s6 .fall-collage{width:38vw;height:650px;}
+}
+@media(max-width:780px){
+  #s6 .fall-plans-shell{display:block;width:92vw;}
+  #s6 .fall-collage{position:relative;width:88vw;height:560px;margin:2.5rem auto 1rem;}
+  #s6 .fall-plans-title{font-size:clamp(3.2rem,14vw,5rem);}
+}
+@media(prefers-reduced-motion:reduce){
+  #s6 .fall-plans-kicker,#s6 .fall-plans-title,#s6 .fall-plan,#s6 .fall-collage{opacity:1;transform:none;animation:none!important;}
+}
