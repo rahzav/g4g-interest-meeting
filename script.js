@@ -82,8 +82,8 @@
       font-family:var(--sans);
       font-size:19px;
       font-weight:500;
-      letter-spacing:.005em;
-      fill:#aaa7a1;
+      letter-spacing:0;
+      fill:var(--stone-500);
       pointer-events:auto;
       user-select:text;
       cursor:text;
@@ -151,7 +151,7 @@
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
           '</g>' +
-          '<text class="cost-rise-caption-text" x="58" y="392" text-anchor="middle">estimated total cost of treatment</text>' +
+          '<text class="cost-rise-caption-text" x="124" y="392" text-anchor="middle">estimated total cost of treatment</text>' +
         '</svg>' +
       '</div>';
     s2.appendChild(costRise);
