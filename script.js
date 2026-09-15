@@ -230,10 +230,9 @@
     var target = parseInt(el.getAttribute('data-spring-total'),10) || 500;
 
     function render(progress){
-      var eased = 1 - Math.pow(1 - progress,4);
-      var shown = progress >= 1 ? target : Math.min(target - 1,Math.floor(target * eased));
-      el.textContent = shown;
-      emblem.style.setProperty('--emblem-fill-top',(100 - eased * 100).toFixed(2) + '%');
+      var syncedProgress = Math.max(0, Math.min(progress, 1));
+      el.textContent = Math.round(target * syncedProgress);
+      emblem.style.setProperty('--emblem-fill-top',(100 - syncedProgress * 100).toFixed(2) + '%');
     }
 
     if(reduced){
@@ -244,7 +243,7 @@
 
     render(0);
     var startTime = null;
-    var duration = 2300;
+    var duration = 1800;
 
     function step(ts){
       if(!startTime) startTime = ts;
