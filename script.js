@@ -172,6 +172,7 @@
     if(current === 3 && i !== 3){
       var s4Leaving = document.getElementById('s4');
       if(s4Leaving){
+        s4Leaving.classList.add('is-exiting');
         var oldTagline = s4Leaving.querySelector('.s4-tagline');
         if(oldTagline) oldTagline.classList.remove('is-typing');
       }
@@ -179,13 +180,19 @@
       pillarStep = -1;
       clearTimeout(s4ResetTimer);
       s4ResetTimer = setTimeout(function(){
-        if(current !== 3 && s4Leaving) s4Leaving.classList.remove('pillars-on');
+        if(current !== 3 && s4Leaving){
+          s4Leaving.classList.remove('pillars-on');
+          s4Leaving.classList.remove('is-exiting');
+        }
       },950);
     }
     if(i === 3){
       clearTimeout(s4ResetTimer);
       var s4Entering = document.getElementById('s4');
-      if(s4Entering) s4Entering.classList.remove('pillars-on');
+      if(s4Entering){
+        s4Entering.classList.remove('pillars-on');
+        s4Entering.classList.remove('is-exiting');
+      }
       pillarStep = -1;
     }
     current = i;
