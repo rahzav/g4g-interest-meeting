@@ -917,19 +917,6 @@
   overflow: hidden;
 }
 
-#spring-snapshot::before {
-  content: '';
-  position: absolute;
-  width: min(50vw, 760px);
-  aspect-ratio: 1;
-  left: 54%;
-  top: 54%;
-  transform: translate(-50%,-50%);
-  border: 1px solid rgba(200,16,46,.08);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
 .spring-shell {
   position: relative;
   z-index: 2;
@@ -939,7 +926,7 @@
   padding: clamp(7.2rem, 11vh, 9.2rem) 0 clamp(5rem, 7vh, 6.5rem);
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: clamp(2.8rem, 4.2vh, 4.4rem);
+  gap: clamp(5.2rem, 7.5vh, 7.4rem);
 }
 
 .spring-header { align-self: start; }
@@ -960,7 +947,7 @@
   grid-template-columns: minmax(420px, .82fr) minmax(650px, 1.18fr);
   align-items: center;
   gap: clamp(4.5rem, 7vw, 8.5rem);
-  padding: 0 clamp(1rem, 2vw, 2.5rem) clamp(1.5rem, 3vh, 3rem);
+  padding: clamp(1.25rem, 2vh, 2rem) clamp(1rem, 2vw, 2.5rem) clamp(1.5rem, 3vh, 3rem);
 }
 
 .spring-emblem-stage {
@@ -970,20 +957,6 @@
   aspect-ratio: 1882 / 836;
   justify-self: end;
   filter: drop-shadow(0 24px 38px rgba(30,24,22,.10));
-}
-
-.spring-emblem-stage::after {
-  content: '';
-  position: absolute;
-  inset: -13% -8%;
-  border: 1px solid rgba(200,16,46,.12);
-  border-radius: 50%;
-  transform: scale(.92);
-  opacity: 0;
-}
-
-#spring-snapshot.active .spring-emblem-stage::after {
-  animation: springHalo 1800ms cubic-bezier(.2,.75,.25,1) 420ms both;
 }
 
 .spring-emblem-base,
@@ -1051,9 +1024,10 @@
 }
 
 .spring-dollar {
-  font-size: .47em;
-  margin-right: .025em;
-  letter-spacing: -.03em;
+  font-size: 1em;
+  margin-right: .015em;
+  font-weight: inherit;
+  letter-spacing: inherit;
 }
 
 .spring-plus {
@@ -1066,19 +1040,6 @@
   letter-spacing: 0;
   opacity: 1;
   transform: none;
-}
-
-.spring-total-rule {
-  width: 0;
-  max-width: 760px;
-  height: 3px;
-  margin: clamp(1.5rem, 2.4vh, 2.3rem) 0 clamp(1.1rem, 1.8vh, 1.7rem);
-  background: linear-gradient(90deg, var(--spring-red) 0 76%, rgba(200,16,46,.12) 76% 100%);
-  transform-origin: left center;
-}
-
-#spring-snapshot.active .spring-total-rule {
-  animation: springRule 1800ms cubic-bezier(.2,.75,.25,1) 420ms both;
 }
 
 .spring-purpose {
@@ -1098,20 +1059,10 @@
   letter-spacing: .02em;
 }
 
-@keyframes springRule {
-  from { width: 0; opacity: 0; }
-  to { width: 100%; opacity: 1; }
-}
-
-@keyframes springHalo {
-  from { opacity: 0; transform: scale(.84); }
-  to { opacity: 1; transform: scale(1); }
-}
-
 @media (max-width: 1000px) {
   .spring-shell {
     padding-top: clamp(6.3rem, 9vh, 7.4rem);
-    gap: 2rem;
+    gap: 3.4rem;
   }
   .spring-layout {
     grid-template-columns: 1fr;
@@ -1130,5 +1081,4 @@
     font-size: clamp(6.8rem, 21vw, 11rem);
   }
   .spring-raised { margin-left: 0; }
-  .spring-total-rule { margin-left: auto; margin-right: auto; }
 }
