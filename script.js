@@ -212,9 +212,20 @@
       pillarStep = -1;
     }
     if(current === 4 && i !== 4){
-      setSpringDonation(false, true);
+      var springLeaving = document.getElementById('spring-snapshot');
+      setTimeout(function(){
+        if(current !== 4 && springLeaving){
+          springLeaving.classList.remove('donation-on','donation-exiting');
+          var springReveal = springLeaving.querySelector('.spring-donation');
+          if(springReveal) springReveal.setAttribute('aria-hidden','true');
+          springDonationOn = false;
+          springDonationTransitioning = false;
+        }
+      }, 920);
     }
     if(i === 4){
+      var springEntering = document.getElementById('spring-snapshot');
+      if(springEntering) springEntering.classList.remove('donation-exiting');
       setSpringDonation(false, true);
     }
     current = i;
@@ -248,6 +259,7 @@
     if(!slide || !reveal) return;
     springDonationOn = show;
     springDonationTransitioning = !instant;
+    slide.classList.remove('donation-exiting');
     slide.classList.toggle('donation-on', show);
     reveal.setAttribute('aria-hidden', show ? 'false' : 'true');
     if(instant){
@@ -388,6 +400,13 @@
     if(current === 4){
       if(springDonationTransitioning) return;
       if(!springDonationOn){ setSpringDonation(true, false); return; }
+      var springSlide = document.getElementById('spring-snapshot');
+      springDonationTransitioning = true;
+      if(springSlide) springSlide.classList.add('donation-exiting');
+      setTimeout(function(){
+        if(current === 4) goTo(current + 1);
+      }, 430);
+      return;
     }
     if(current === 3){
       if(pillarTransitioning) return;
@@ -455,8 +474,8 @@
     if(!el || !stage || !bar || !valueWrap) return;
 
     var target = parseInt(el.getAttribute('data-impact-count'), 10);
-    var stageHeight = stage.getBoundingClientRect().height;
-    var maxHeight = Math.round(stageHeight * 0.58);
+    var guide = document.querySelector('#s3 .s3-bar-guide');
+    var maxHeight = guide ? guide.getBoundingClientRect().height : Math.round(stage.getBoundingClientRect().height * 0.58);
     var base = parseFloat(window.getComputedStyle(bar).bottom) || 32;
     var valueGap = 14;
 
