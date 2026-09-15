@@ -48,6 +48,10 @@
     }
     #s2 .cost-rise-head{
       fill:var(--scarlet);
+      stroke:var(--scarlet);
+      stroke-width:1;
+      stroke-linejoin:round;
+      shape-rendering:geometricPrecision;
       filter:drop-shadow(0 0 8px rgba(200,16,46,.18));
     }
     #s2 .cost-rise-value-text{
@@ -123,7 +127,7 @@
         '<svg class="cost-rise-svg" viewBox="0 0 640 420" aria-hidden="true">' +
           '<path class="cost-rise-line" d="M58 366 L578 42"></path>' +
           '<g class="cost-rise-head-wrap" opacity="0">' +
-            '<polygon class="cost-rise-head" points="58,366 58,366 58,366"></polygon>' +
+            '<path class="cost-rise-head" d="M58 366 L58 366 L58 366 Z"></path>' +
           '</g>' +
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
@@ -295,10 +299,13 @@
       var cornerBX = baseX - perpendicularX * halfWidth;
       var cornerBY = baseY - perpendicularY * halfWidth;
 
-      headShape.setAttribute('points',
-        point.x + ',' + point.y + ' ' +
-        cornerAX + ',' + cornerAY + ' ' +
-        cornerBX + ',' + cornerBY
+      /* Keep the tip as the literal first vertex at the revealed path endpoint.
+         Building the head in path coordinates avoids a second transform whose
+         endpoint rounding previously caused the final-frame rotation glitch. */
+      headShape.setAttribute('d',
+        'M' + point.x.toFixed(3) + ' ' + point.y.toFixed(3) +
+        ' L' + cornerAX.toFixed(3) + ' ' + cornerAY.toFixed(3) +
+        ' L' + cornerBX.toFixed(3) + ' ' + cornerBY.toFixed(3) + ' Z'
       );
       valueWrap.setAttribute('transform', 'translate(' + point.x + ' ' + point.y + ')');
     }
