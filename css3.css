@@ -17,20 +17,20 @@
     display:grid;
     grid-template-columns:minmax(330px,.72fr) minmax(620px,1.28fr);
     gap:clamp(2.5rem,4vw,5rem);
-    align-items:center;
+    align-items:start;
   }
   #s3 h2.display{
     max-width:700px;
     margin:0;
     font-family:Georgia,'Times New Roman',serif;
-    font-size:clamp(2.2rem,4.15vw,4.3rem);
+    font-size:clamp(3.2rem,5.25vw,5.6rem);
     font-weight:700;
     line-height:1.04;
     letter-spacing:-.025em;
     color:var(--charcoal);
   }
   #s3 .s3-intro{
-    max-width:620px;
+    max-width:720px;
     margin:clamp(1rem,1.5vw,1.4rem) 0 0;
     font-family:var(--sans);
     font-size:clamp(.92rem,1.05vw,1.04rem);
@@ -41,6 +41,7 @@
     transform:translateY(16px);
   }
   #s3.active .s3-intro{animation:riseIn 700ms cubic-bezier(.2,.8,.2,1) 420ms forwards;}
+  #s3 .s3-nowrap{white-space:nowrap;}
   #s3 .s3-collage{
     position:relative;
     width:min(100%,760px);
@@ -88,6 +89,14 @@
     margin-top:clamp(1.45rem,2.2vw,2rem);
   }
   #s3 .pillar{
+    position:relative;
+    min-height:172px;
+    padding:1.15rem 1.3rem 1.25rem;
+    overflow:hidden;
+    background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.56));
+    border:1px solid rgba(140,137,133,.24);
+    border-top:3px solid var(--scarlet);
+    box-shadow:0 10px 26px rgba(25,24,22,.07);
     opacity:0;
     transform:translateY(26px);
     transition:transform 260ms ease,box-shadow 260ms ease;
@@ -95,7 +104,7 @@
   #s3.active .pillar:nth-child(1){animation:riseIn 650ms cubic-bezier(.2,.8,.2,1) 560ms forwards;}
   #s3.active .pillar:nth-child(2){animation:riseIn 650ms cubic-bezier(.2,.8,.2,1) 700ms forwards;}
   #s3.active .pillar:nth-child(3){animation:riseIn 650ms cubic-bezier(.2,.8,.2,1) 840ms forwards;}
-  #s3 .pillar:hover{transform:translateY(-6px);}
+  #s3 .pillar:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(25,24,22,.12);}
   #s3 .pillar-mark{
     width:50px;
     height:50px;
@@ -104,6 +113,7 @@
     align-items:center;
     justify-content:center;
     margin-bottom:.7rem;
+    box-shadow:0 6px 14px rgba(25,24,22,.14);
     background:var(--charcoal);
     font-family:Georgia,'Times New Roman',serif;
     font-size:1.4rem;
