@@ -1,7 +1,7 @@
 /* ================= SLIDE 6 : FALL SEM PLANS & PROJECTS ================= */
 #s6{
   overflow:hidden;
-  padding:clamp(6rem,9vh,8rem) clamp(4.5rem,7vw,7.5rem) clamp(3.5rem,5vh,5rem);
+  padding:clamp(4.8rem,7.3vh,6.9rem) clamp(4.5rem,7vw,7.5rem) clamp(4rem,6vh,5.6rem);
   background:
     radial-gradient(circle at 77% 43%,rgba(200,16,46,.15),transparent 34%),
     linear-gradient(135deg,#08090a 0%,#0d0e10 56%,#090a0b 100%)!important;
@@ -20,7 +20,12 @@
   z-index:2;
 }
 
-#s6 .fall-plans-header{grid-column:1 / -1;align-self:start;}
+#s6 .fall-plans-header{
+  grid-column:1 / -1;
+  align-self:start;
+  position:relative;
+  top:clamp(1rem,2vh,1.45rem);
+}
 #s6 .fall-plans-title{
   max-width:none;
   margin:0;
