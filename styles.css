@@ -1220,3 +1220,54 @@
   .spring-donation-card img { width: min(68vw, 340px); max-height: 58vh; }
   .spring-donation-hint { text-align: center; }
 }
+
+
+/* Focused donation reveal and slide-specific scale corrections. */
+.spring-donation-label {
+  margin-bottom: clamp(1.15rem, 2vh, 1.7rem);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(3.6rem, 6.4vw, 6.6rem);
+  font-weight: 700;
+  line-height: .9;
+  letter-spacing: -.045em;
+  color: var(--spring-red);
+}
+
+.spring-donation-card {
+  padding: clamp(.9rem, 1.2vw, 1.2rem);
+}
+
+.spring-donation-card img {
+  width: min(37vw, 480px);
+  max-height: 62vh;
+}
+
+#s3 .s3-org-shell {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#s4.active:not(.pillars-on) .s4-wordmark {
+  font-size: clamp(5.2rem, 12vw, 11rem)!important;
+}
+
+#s4.active:not(.pillars-on) .s4-tagline {
+  font-size: clamp(1.15rem, 2vw, 1.75rem)!important;
+}
+
+@media (min-width: 1500px) and (min-height: 800px) {
+  #s3 .s3-org-shell {
+    width: min(88vw, 1700px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .spring-donation-label {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+  }
+  .spring-donation-card img {
+    width: min(72vw, 360px);
+  }
+}
