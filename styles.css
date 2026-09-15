@@ -926,7 +926,7 @@
   padding: clamp(7.2rem, 11vh, 9.2rem) 0 clamp(5rem, 7vh, 6.5rem);
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: clamp(5.2rem, 7.5vh, 7.4rem);
+  gap: clamp(3.3rem, 4.8vh, 4.8rem);
 }
 
 .spring-header { align-self: start; }
@@ -947,7 +947,7 @@
   grid-template-columns: minmax(420px, .82fr) minmax(650px, 1.18fr);
   align-items: center;
   gap: clamp(4.5rem, 7vw, 8.5rem);
-  padding: clamp(1.25rem, 2vh, 2rem) clamp(1rem, 2vw, 2.5rem) clamp(1.5rem, 3vh, 3rem);
+  padding: 0 clamp(1rem, 2vw, 2.5rem) clamp(2.2rem, 3.5vh, 3.6rem);
 }
 
 .spring-emblem-stage {
@@ -1016,9 +1016,9 @@
   white-space: nowrap;
   color: var(--spring-ink);
   font-family: 'Fraunces', Georgia, serif;
-  font-size: clamp(9rem, 15vw, 16rem);
+  font-size: clamp(8rem, 12.4vw, 13.6rem);
   font-weight: 620;
-  line-height: .72;
+  line-height: .86;
   letter-spacing: -.075em;
   font-variant-numeric: tabular-nums lining-nums;
 }
@@ -1032,17 +1032,18 @@
 
 .spring-plus {
   display: inline-block;
-  margin-left: .035em;
+  margin-left: .015em;
   color: var(--spring-red);
   font-family: 'Fraunces', Georgia, serif;
-  font-size: .64em;
-  font-weight: 470;
+  font-size: 1em;
+  font-weight: inherit;
   letter-spacing: 0;
   opacity: 1;
   transform: none;
 }
 
 .spring-purpose {
+  margin-top: clamp(.75rem, 1.2vh, 1.15rem);
   color: var(--spring-ink);
   font-family: 'Inter', sans-serif;
   font-size: clamp(1.18rem, 1.55vw, 1.7rem);
@@ -1062,7 +1063,7 @@
 @media (max-width: 1000px) {
   .spring-shell {
     padding-top: clamp(6.3rem, 9vh, 7.4rem);
-    gap: 3.4rem;
+    gap: 2.4rem;
   }
   .spring-layout {
     grid-template-columns: 1fr;
