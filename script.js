@@ -152,6 +152,7 @@
   var nextBtn = document.getElementById('nextBtn');
   var current = 0;
   var pillarStep = -1;
+  var s4TypeRun = 0;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach(function(s, i){
@@ -169,7 +170,12 @@
     if(i < 0 || i >= slides.length || i === current) { updateButtons(); return; }
     if(current === 3 && i !== 3){
       var s4Leaving = document.getElementById('s4');
-      if(s4Leaving) s4Leaving.classList.remove('pillars-on');
+      if(s4Leaving){
+        s4Leaving.classList.remove('pillars-on');
+        var oldTagline = s4Leaving.querySelector('.s4-tagline');
+        if(oldTagline) oldTagline.classList.remove('is-typing');
+      }
+      s4TypeRun++;
       pillarStep = -1;
     }
     current = i;
@@ -179,6 +185,9 @@
     counter.textContent = pad(i+1) + ' / ' + pad(slides.length);
     document.getElementById('bg-canvas').classList.toggle('show', slides[i].classList.contains('dark'));
     updateButtons();
+    if(i === 3){
+      runSlide4Typing();
+    }
     if(i === 1){
       runCounters();
       runCostRise();
@@ -191,6 +200,37 @@
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === slides.length - 1;
   }
+  function runSlide4Typing(){
+    var line = document.querySelector('#s4 .s4-tagline');
+    if(!line) return;
+    var fullText = line.getAttribute('data-type-text') || '';
+    var runId = ++s4TypeRun;
+    line.textContent = '';
+    line.classList.remove('is-typing');
+
+    if(reduced){
+      line.textContent = fullText;
+      return;
+    }
+
+    setTimeout(function(){
+      if(runId !== s4TypeRun || current !== 3) return;
+      line.classList.add('is-typing');
+      var index = 0;
+      function typeNext(){
+        if(runId !== s4TypeRun || current !== 3) return;
+        index++;
+        line.textContent = fullText.slice(0,index);
+        if(index < fullText.length){
+          setTimeout(typeNext,42);
+        }else{
+          line.classList.remove('is-typing');
+        }
+      }
+      typeNext();
+    },700);
+  }
+
   function updatePillarCarousel(step){
     var s4 = document.getElementById('s4');
     if(!s4) return false;
