@@ -151,15 +151,15 @@
 #s6 .fall-photo-bottom img{object-position:50% 45%;}
 #s6 .fall-collage-caption{
   position:absolute;
-  left:8%;
-  top:70%;
-  bottom:auto;
+  left:0;
+  top:auto;
+  bottom:0;
   z-index:5;
   padding:.85rem 1.15rem .95rem;
   background:var(--scarlet);
   color:var(--white);
-  transform:translateY(-15%) rotate(-2.5deg);
-  box-shadow:0 12px 30px rgba(0,0,0,.3);
+  transform:none;
+  box-shadow:8px -8px 24px rgba(0,0,0,.18);
   font-family:var(--sans);
 }
 #s6 .fall-collage-caption span{display:block;font-size:clamp(.68rem,.78vw,.82rem);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
