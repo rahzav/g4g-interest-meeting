@@ -911,18 +911,26 @@
   align-items:center!important;
   justify-content:center!important;
   overflow:hidden!important;
-  background:#f3f1ee!important;
+  background:
+    radial-gradient(circle at 28% 50%,rgba(200,16,46,.18),transparent 30%),
+    radial-gradient(circle at 75% 48%,rgba(200,16,46,.07),transparent 28%),
+    linear-gradient(180deg,#090a0b 0%,#0b0c0e 100%)!important;
 }
 #spring-snapshot .spring-shell{
-  width:100%;
-  height:100%;
+  width:min(1780px,90vw);
+  height:min(860px,84vh);
   display:grid;
-  grid-template-rows:1fr minmax(380px,58vh) 1fr;
+  grid-template-rows:auto 1fr;
+  gap:clamp(1rem,2vh,1.8rem);
+}
+#spring-snapshot .spring-header{
+  display:flex;
   align-items:center;
+  min-height:2rem;
 }
 #spring-snapshot .spring-kicker{
-  align-self:end;
-  padding:0 clamp(3rem,6vw,7rem) clamp(1.25rem,2.4vh,2rem);
+  padding:0;
+  margin:0;
   font-family:var(--sans);
   font-size:clamp(.78rem,1vw,.95rem);
   font-weight:700;
@@ -932,106 +940,191 @@
   opacity:0;
   transform:translateY(10px);
 }
-#spring-snapshot .spring-impact{
+#spring-snapshot .spring-layout{
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(430px,.95fr) minmax(520px,1.05fr);
+  align-items:center;
+  gap:clamp(4rem,8vw,10rem);
+}
+#spring-snapshot .spring-brain-stage{
   position:relative;
-  width:100%;
-  height:100%;
   display:grid;
   place-items:center;
-  overflow:hidden;
+  min-width:0;
+  height:min(67vh,650px);
 }
-#spring-snapshot .spring-band{
+#spring-snapshot .spring-brain-glow{
   position:absolute;
-  inset:0 clamp(1.5rem,4vw,5rem);
-  background:
-    radial-gradient(circle at 50% 45%,rgba(255,255,255,.11),transparent 38%),
-    linear-gradient(110deg,#b90f2b,#d21435 52%,#b90f2b);
-  box-shadow:0 22px 70px rgba(200,16,46,.18);
-  transform:scaleY(.012);
-  transform-origin:center;
+  width:min(40vw,640px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(211,18,50,.25),rgba(200,16,46,.06) 42%,transparent 68%);
+  opacity:0;
+  transform:scale(.72);
+  filter:blur(12px);
 }
-#spring-snapshot .spring-copy{
+#spring-snapshot .spring-brain-frame{
   position:relative;
   z-index:2;
-  text-align:center;
-  color:#fff;
+  width:min(42vw,700px);
+  aspect-ratio:420/246;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.22);
+  background:#050607;
+  box-shadow:0 28px 90px rgba(0,0,0,.48),0 0 58px rgba(200,16,46,.12);
   opacity:0;
-  transform:translateY(18px);
+  transform:scale(.94);
+  clip-path:inset(50% 0 50% 0);
+}
+#spring-snapshot .spring-brain-frame::before,
+#spring-snapshot .spring-brain-frame::after{
+  content:'';
+  position:absolute;
+  z-index:4;
+  width:52px;
+  height:52px;
+  pointer-events:none;
+}
+#spring-snapshot .spring-brain-frame::before{
+  left:14px;
+  top:14px;
+  border-left:2px solid var(--scarlet);
+  border-top:2px solid var(--scarlet);
+}
+#spring-snapshot .spring-brain-frame::after{
+  right:14px;
+  bottom:14px;
+  border-right:2px solid var(--scarlet);
+  border-bottom:2px solid var(--scarlet);
+}
+#spring-snapshot .spring-brain-frame img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:grayscale(1) contrast(1.12) brightness(.78);
+  transform:scale(1.01);
+}
+#spring-snapshot .spring-scan{
+  position:absolute;
+  z-index:3;
+  left:0;
+  right:0;
+  top:-12%;
+  height:18%;
+  background:linear-gradient(180deg,transparent,rgba(225,25,57,.12) 35%,rgba(239,42,73,.72) 96%,rgba(255,255,255,.9) 100%);
+  opacity:0;
+  mix-blend-mode:screen;
+  box-shadow:0 10px 32px rgba(200,16,46,.28);
+}
+#spring-snapshot .spring-signal{
+  position:absolute;
+  z-index:1;
+  left:calc(50% + min(21vw,350px));
+  top:50%;
+  width:clamp(4rem,8vw,9rem);
+  height:1px;
+  background:linear-gradient(90deg,rgba(200,16,46,.85),rgba(200,16,46,.12));
+  transform:scaleX(0);
+  transform-origin:left;
+}
+#spring-snapshot .spring-impact{
+  position:relative;
+  z-index:3;
+  min-width:0;
+  color:#f6f5f2;
+  opacity:0;
+  transform:translateY(22px);
 }
 #spring-snapshot .spring-raised{
-  margin-bottom:clamp(.2rem,.7vh,.55rem);
+  margin:0 0 clamp(.5rem,1vh,.8rem);
   font-family:var(--sans);
-  font-size:clamp(.75rem,1vw,.95rem);
+  font-size:clamp(.78rem,1vw,.95rem);
   font-weight:700;
   letter-spacing:.2em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.72);
+  color:var(--scarlet);
 }
 #spring-snapshot .spring-total{
   display:flex;
-  align-items:flex-start;
-  justify-content:center;
+  align-items:center;
+  justify-content:flex-start;
+  white-space:nowrap;
   font-family:var(--serif);
-  font-size:clamp(7rem,16vw,15rem);
+  font-size:clamp(7rem,12vw,13rem);
   font-weight:650;
   line-height:.72;
   letter-spacing:-.075em;
   font-variant-numeric:tabular-nums;
 }
 #spring-snapshot .spring-dollar{
-  margin-right:.04em;
-  font-size:.42em;
-  line-height:1.05;
+  margin-right:.025em;
+  font-size:.48em;
+  line-height:1;
   letter-spacing:0;
 }
 #spring-snapshot .spring-plus{
-  margin-left:.06em;
-  font-size:.4em;
-  line-height:1.05;
+  margin-left:.04em;
+  font-size:.88em;
+  line-height:.72;
   letter-spacing:0;
   opacity:0;
-  transform:scale(.35) rotate(-12deg);
+  transform:scale(.3) rotate(-14deg);
   transform-origin:center;
 }
 #spring-snapshot .spring-purpose{
-  margin-top:clamp(1.2rem,2.4vh,1.9rem);
+  margin-top:clamp(1.4rem,2.7vh,2rem);
   font-family:var(--sans);
-  font-size:clamp(.95rem,1.35vw,1.25rem);
+  font-size:clamp(1rem,1.35vw,1.25rem);
   font-weight:600;
-  letter-spacing:.01em;
-  color:rgba(255,255,255,.86);
+  line-height:1.35;
+  color:#d2cfca;
 }
 #spring-snapshot .spring-detail{
-  align-self:start;
-  justify-self:center;
-  display:flex;
-  align-items:baseline;
-  gap:.7rem;
-  padding-top:clamp(1.25rem,2.4vh,2rem);
+  margin-top:clamp(1rem,2vh,1.5rem);
   font-family:var(--sans);
-  font-size:clamp(.88rem,1.15vw,1.05rem);
-  font-weight:600;
-  color:var(--stone-600);
+  font-size:clamp(.78rem,.95vw,.9rem);
+  font-weight:500;
+  line-height:1.4;
+  letter-spacing:.015em;
+  color:#77746f;
   opacity:0;
-  transform:translateY(12px);
-}
-#spring-snapshot .spring-detail span{
-  font-family:var(--serif);
-  font-size:clamp(1.6rem,2.5vw,2.25rem);
-  font-weight:650;
-  color:var(--scarlet);
+  transform:translateY(8px);
 }
 #spring-snapshot.active .spring-kicker{animation:springRise 600ms ease 100ms forwards;}
-#spring-snapshot.active .spring-band{animation:springBandIn 900ms cubic-bezier(.16,1,.3,1) 220ms forwards;}
-#spring-snapshot.active .spring-copy{animation:springRise 720ms cubic-bezier(.16,1,.3,1) 500ms forwards;}
-#spring-snapshot.active .spring-plus{animation:springPlusIn 520ms cubic-bezier(.16,1,.3,1) 2850ms forwards;}
-#spring-snapshot.active .spring-detail{animation:springRise 650ms cubic-bezier(.16,1,.3,1) 1120ms forwards;}
+#spring-snapshot.active .spring-brain-glow{animation:springGlowIn 1000ms cubic-bezier(.16,1,.3,1) 240ms forwards;}
+#spring-snapshot.active .spring-brain-frame{animation:springBrainReveal 1000ms cubic-bezier(.16,1,.3,1) 280ms forwards;}
+#spring-snapshot.active .spring-scan{animation:springScan 1900ms cubic-bezier(.45,0,.55,1) 850ms forwards;}
+#spring-snapshot.active .spring-signal{animation:springSignal 720ms cubic-bezier(.16,1,.3,1) 1050ms forwards;}
+#spring-snapshot.active .spring-impact{animation:springRise 760ms cubic-bezier(.16,1,.3,1) 700ms forwards;}
+#spring-snapshot.active .spring-plus{animation:springPlusIn 520ms cubic-bezier(.16,1,.3,1) 2950ms forwards;}
+#spring-snapshot.active .spring-detail{animation:springRise 600ms ease 3100ms forwards;}
+@keyframes springBrainReveal{to{opacity:1;transform:none;clip-path:inset(0 0 0 0);}}
+@keyframes springGlowIn{to{opacity:1;transform:scale(1);}}
+@keyframes springScan{
+  0%{opacity:0;transform:translateY(0);}
+  12%{opacity:1;}
+  88%{opacity:1;}
+  100%{opacity:0;transform:translateY(680%);}
+}
+@keyframes springSignal{to{transform:scaleX(1);}}
 @keyframes springBandIn{to{transform:scaleY(1);}}
 @keyframes springRise{to{opacity:1;transform:none;}}
 @keyframes springPlusIn{to{opacity:1;transform:none;}}
-@media(max-width:700px){
-  #spring-snapshot .spring-shell{grid-template-rows:1fr minmax(340px,54vh) 1fr;}
-  #spring-snapshot .spring-band{inset:0 1rem;}
-  #spring-snapshot .spring-total{font-size:clamp(6rem,25vw,9rem);}
-  #spring-snapshot .spring-purpose{padding:0 1.5rem;}
+@media(max-width:980px){
+  #spring-snapshot .spring-shell{width:90vw;height:86vh;}
+  #spring-snapshot .spring-layout{grid-template-columns:1fr;grid-template-rows:minmax(240px,42vh) auto;gap:1.5rem;}
+  #spring-snapshot .spring-brain-stage{height:42vh;}
+  #spring-snapshot .spring-brain-frame{width:min(86vw,620px);}
+  #spring-snapshot .spring-signal{display:none;}
+  #spring-snapshot .spring-impact{text-align:center;}
+  #spring-snapshot .spring-total{justify-content:center;font-size:clamp(6.5rem,20vw,10rem);}
+}
+@media(max-width:620px){
+  #spring-snapshot .spring-shell{height:90vh;}
+  #spring-snapshot .spring-layout{grid-template-rows:minmax(210px,34vh) auto;}
+  #spring-snapshot .spring-brain-stage{height:34vh;}
+  #spring-snapshot .spring-total{font-size:clamp(5.8rem,23vw,8rem);}
+  #spring-snapshot .spring-purpose{font-size:.9rem;}
 }
