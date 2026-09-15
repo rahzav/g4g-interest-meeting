@@ -154,6 +154,7 @@
   var pillarStep = -1;
   var s4TypeRun = 0;
   var s4ResetTimer = null;
+  var pillarTransitioning = false;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach(function(s, i){
@@ -181,8 +182,9 @@
       clearTimeout(s4ResetTimer);
       s4ResetTimer = setTimeout(function(){
         if(current !== 3 && s4Leaving){
-          s4Leaving.classList.remove('pillars-on');
+          s4Leaving.classList.remove('pillars-on','core-out','team-on');
           s4Leaving.classList.remove('is-exiting');
+          pillarTransitioning = false;
         }
       },950);
     }
@@ -190,8 +192,9 @@
       clearTimeout(s4ResetTimer);
       var s4Entering = document.getElementById('s4');
       if(s4Entering){
-        s4Entering.classList.remove('pillars-on');
+        s4Entering.classList.remove('pillars-on','core-out','team-on');
         s4Entering.classList.remove('is-exiting');
+        pillarTransitioning = false;
       }
       pillarStep = -1;
     }
@@ -248,31 +251,74 @@
     },700);
   }
 
+  function setPillarCenter(items, center){
+    items.forEach(function(item){
+      item.classList.toggle('is-center', parseInt(item.getAttribute('data-pillar'),10) === center);
+    });
+  }
+
   function updatePillarCarousel(step){
     var s4 = document.getElementById('s4');
     if(!s4) return false;
-    var items = Array.prototype.slice.call(s4.querySelectorAll('.s4-pillar'));
-    if(!items.length) return false;
+    var coreItems = Array.prototype.slice.call(s4.querySelectorAll('.s4-core-pillars .s4-pillar'));
+    var teamItems = Array.prototype.slice.call(s4.querySelectorAll('.s4-team-pillars .s4-pillar'));
+    if(coreItems.length !== 3 || teamItems.length !== 3) return false;
+
     pillarStep = step;
-    if(pillarStep < 0){
-      s4.classList.remove('pillars-on');
-      items.forEach(function(item){ item.classList.toggle('is-center', item.getAttribute('data-pillar') === '0'); });
+    if(step < 0){
+      s4.classList.remove('pillars-on','core-out','team-on');
+      setPillarCenter(coreItems,0);
+      setPillarCenter(teamItems,0);
+      pillarTransitioning = false;
       return true;
     }
+
     s4.classList.add('pillars-on');
-    var center = pillarStep % items.length;
-    items.forEach(function(item){ item.classList.toggle('is-center', parseInt(item.getAttribute('data-pillar'),10) === center); });
+
+    if(step <= 2){
+      setPillarCenter(coreItems,step);
+      if(s4.classList.contains('team-on')){
+        pillarTransitioning = true;
+        s4.classList.add('core-out');
+        s4.classList.remove('team-on');
+        setTimeout(function(){
+          if(current === 3 && pillarStep <= 2){
+            s4.classList.remove('core-out');
+            pillarTransitioning = false;
+          }
+        },520);
+      }else{
+        s4.classList.remove('core-out');
+      }
+      return true;
+    }
+
+    setPillarCenter(teamItems,step - 3);
+    if(!s4.classList.contains('team-on')){
+      pillarTransitioning = true;
+      s4.classList.add('core-out');
+      setTimeout(function(){
+        if(current === 3 && pillarStep >= 3){
+          s4.classList.add('team-on');
+          s4.classList.remove('core-out');
+          pillarTransitioning = false;
+        }
+      },520);
+    }
     return true;
   }
+
   function next(){
     if(current === 3){
+      if(pillarTransitioning) return;
       if(pillarStep < 0){ updatePillarCarousel(0); return; }
-      if(pillarStep < 2){ updatePillarCarousel(pillarStep + 1); return; }
+      if(pillarStep < 5){ updatePillarCarousel(pillarStep + 1); return; }
     }
     goTo(current+1);
   }
   function prev(){
     if(current === 3 && pillarStep >= 0){
+      if(pillarTransitioning) return;
       if(pillarStep > 0){ updatePillarCarousel(pillarStep - 1); return; }
       updatePillarCarousel(-1); return;
     }
