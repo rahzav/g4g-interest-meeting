@@ -906,144 +906,103 @@
 
 /* Spring semester fundraising snapshot. */
 #spring-snapshot{
-  padding:0!important;
+  padding:clamp(6.4rem,10vh,8.8rem) clamp(3.5rem,6vw,7rem) clamp(3.8rem,6vh,5.5rem)!important;
   display:flex!important;
-  align-items:center!important;
+  align-items:flex-start!important;
   justify-content:center!important;
   overflow:hidden!important;
   background:
-    radial-gradient(circle at 50% 48%,rgba(200,16,46,.055),transparent 34%),
+    radial-gradient(circle at 27% 62%,rgba(200,16,46,.045),transparent 29%),
     #f4f2ef!important;
 }
 #spring-snapshot .spring-shell{
-  width:min(1840px,92vw);
-  height:min(900px,86vh);
+  width:100%;
+  height:100%;
   display:grid;
   grid-template-rows:auto 1fr;
-  gap:1rem;
+  gap:clamp(2.3rem,4.5vh,4rem);
 }
 #spring-snapshot .spring-header{
-  position:relative;
-  z-index:6;
-  display:flex;
-  align-items:center;
-}
-#spring-snapshot .spring-kicker{
-  padding:0;
-  margin:0;
-  font-family:var(--sans);
-  font-size:clamp(.78rem,1vw,.95rem);
-  font-weight:700;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--scarlet);
-  opacity:0;
-  transform:translateY(10px);
-}
-#spring-snapshot .spring-layout{
-  position:relative;
-  min-height:0;
-  display:grid;
-  place-items:center;
-}
-#spring-snapshot .spring-brain-stage,
-#spring-snapshot .spring-impact{
-  grid-area:1/1;
-}
-#spring-snapshot .spring-brain-stage{
-  position:relative;
-  z-index:1;
-  width:min(68vw,780px);
-  height:min(72vh,690px);
-  display:grid;
-  place-items:center;
-}
-#spring-snapshot .spring-brain-glow{
-  position:absolute;
-  width:min(58vw,650px);
-  aspect-ratio:1;
-  border-radius:50%;
-  border:1px solid rgba(200,16,46,.18);
-  background:radial-gradient(circle,rgba(200,16,46,.08),transparent 67%);
-  opacity:0;
-  transform:scale(.72);
-}
-#spring-snapshot .spring-brain-glow::before,
-#spring-snapshot .spring-brain-glow::after{
-  content:'';
-  position:absolute;
-  inset:9%;
-  border-radius:50%;
-  border:1px solid rgba(200,16,46,.11);
-}
-#spring-snapshot .spring-brain-glow::after{inset:20%;border-color:rgba(200,16,46,.08);}
-#spring-snapshot .spring-brain-frame{
-  position:relative;
-  z-index:2;
-  width:min(58vw,650px);
-  aspect-ratio:1;
-  overflow:hidden;
-  opacity:0;
-  transform:scale(.9);
-  clip-path:circle(0 at 50% 50%);
-}
-#spring-snapshot .spring-brain-frame::before,
-#spring-snapshot .spring-brain-frame::after{display:none!important;}
-#spring-snapshot .spring-brain-frame img{
-  position:absolute;
-  left:50%;
-  top:0;
   display:block;
-  width:auto;
-  height:100%;
-  max-width:none;
-  object-fit:initial;
-  transform:translateX(-50%);
-  filter:grayscale(1) contrast(.92);
-  opacity:.2;
+  min-height:0;
 }
-#spring-snapshot .spring-scan{
-  position:absolute;
-  z-index:3;
-  left:9%;
-  right:9%;
-  top:5%;
-  height:2px;
-  background:linear-gradient(90deg,transparent,rgba(200,16,46,.95) 20% 80%,transparent);
-  opacity:0;
-  box-shadow:0 0 20px rgba(200,16,46,.55),0 8px 26px rgba(200,16,46,.18);
-}
-#spring-snapshot .spring-signal{display:none!important;}
-#spring-snapshot .spring-impact{
-  position:relative;
-  z-index:4;
-  min-width:0;
-  text-align:center;
+#spring-snapshot .spring-title{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(3.4rem,6.4vw,6.4rem);
+  font-weight:650;
+  line-height:.88;
+  letter-spacing:-.058em;
   color:#171716;
   opacity:0;
-  transform:translateY(24px);
+  transform:translateY(18px);
+}
+#spring-snapshot .spring-layout{
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(470px,1fr) minmax(490px,.9fr);
+  align-items:center;
+  gap:clamp(4rem,7vw,8rem);
+}
+#spring-snapshot .spring-emblem-stage{
+  --emblem-fill-top:100%;
+  position:relative;
+  width:min(44vw,760px);
+  aspect-ratio:1882/836;
+  justify-self:center;
+  opacity:0;
+  transform:translateY(18px);
+  filter:drop-shadow(0 20px 38px rgba(31,28,27,.08));
+}
+#spring-snapshot .spring-emblem-base,
+#spring-snapshot .spring-emblem-fill,
+#spring-snapshot .spring-emblem-fill img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+#spring-snapshot .spring-emblem-base{
+  display:block;
+  filter:grayscale(1) saturate(0) brightness(.72);
+  opacity:.22;
+}
+#spring-snapshot .spring-emblem-fill{
+  overflow:hidden;
+  clip-path:inset(var(--emblem-fill-top) 0 0 0);
+  will-change:clip-path;
+}
+#spring-snapshot .spring-emblem-fill img{
+  display:block;
+  object-fit:contain;
+}
+#spring-snapshot .spring-impact{
+  position:relative;
+  min-width:0;
+  color:#171716;
+  opacity:0;
+  transform:translateY(20px);
 }
 #spring-snapshot .spring-raised{
-  margin:0 0 clamp(.6rem,1.2vh,.9rem);
+  margin:0 0 clamp(.55rem,1vh,.85rem);
   font-family:var(--sans);
   font-size:clamp(.8rem,1.05vw,1rem);
   font-weight:700;
-  letter-spacing:.22em;
+  letter-spacing:.2em;
   text-transform:uppercase;
   color:var(--scarlet);
 }
 #spring-snapshot .spring-total{
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-start;
   white-space:nowrap;
   font-family:var(--serif);
-  font-size:clamp(8rem,16vw,16rem);
+  font-size:clamp(7rem,12.5vw,13rem);
   font-weight:650;
   line-height:.7;
   letter-spacing:-.075em;
   font-variant-numeric:tabular-nums;
-  text-shadow:0 14px 36px rgba(244,242,239,.92);
 }
 #spring-snapshot .spring-dollar{
   margin-right:.025em;
@@ -1062,15 +1021,15 @@
   transform-origin:center;
 }
 #spring-snapshot .spring-purpose{
-  margin-top:clamp(1.4rem,2.5vh,1.9rem);
+  margin-top:clamp(1.25rem,2.4vh,1.8rem);
   font-family:var(--sans);
-  font-size:clamp(1rem,1.35vw,1.25rem);
+  font-size:clamp(1rem,1.35vw,1.22rem);
   font-weight:600;
   line-height:1.35;
   color:#4f4c48;
 }
 #spring-snapshot .spring-detail{
-  margin-top:clamp(.85rem,1.8vh,1.25rem);
+  margin-top:clamp(.8rem,1.6vh,1.15rem);
   font-family:var(--sans);
   font-size:clamp(.76rem,.92vw,.88rem);
   font-weight:500;
@@ -1080,29 +1039,18 @@
   opacity:0;
   transform:translateY(8px);
 }
-#spring-snapshot.active .spring-kicker{animation:springRise 600ms ease 100ms forwards;}
-#spring-snapshot.active .spring-brain-glow{animation:springGlowIn 1000ms cubic-bezier(.16,1,.3,1) 220ms forwards,springBrainPulse 2600ms ease-in-out 1300ms infinite;}
-#spring-snapshot.active .spring-brain-frame{animation:springBrainReveal 1050ms cubic-bezier(.16,1,.3,1) 260ms forwards;}
-#spring-snapshot.active .spring-scan{animation:springScan 2100ms cubic-bezier(.45,0,.55,1) 760ms forwards;}
-#spring-snapshot.active .spring-impact{animation:springRise 760ms cubic-bezier(.16,1,.3,1) 620ms forwards;}
+#spring-snapshot.active .spring-title{animation:springRise 700ms cubic-bezier(.16,1,.3,1) 100ms forwards;}
+#spring-snapshot.active .spring-emblem-stage{animation:springRise 720ms cubic-bezier(.16,1,.3,1) 320ms forwards;}
+#spring-snapshot.active .spring-impact{animation:springRise 760ms cubic-bezier(.16,1,.3,1) 420ms forwards;}
 #spring-snapshot.active .spring-plus{animation:springPlusIn 520ms cubic-bezier(.16,1,.3,1) 2950ms forwards;}
-#spring-snapshot.active .spring-detail{animation:springRise 600ms ease 3100ms forwards;}
-@keyframes springBrainReveal{to{opacity:1;transform:none;clip-path:circle(72% at 50% 50%);}}
-@keyframes springGlowIn{to{opacity:1;transform:scale(1);}}
-@keyframes springBrainPulse{0%,100%{box-shadow:0 0 0 rgba(200,16,46,0);}50%{box-shadow:0 0 80px rgba(200,16,46,.09);}}
-@keyframes springScan{
-  0%{opacity:0;transform:translateY(0);}
-  12%{opacity:1;}
-  88%{opacity:1;}
-  100%{opacity:0;transform:translateY(min(58vw,620px));}
-}
+#spring-snapshot.active .spring-detail{animation:springRise 600ms ease 3050ms forwards;}
 @keyframes springRise{to{opacity:1;transform:none;}}
 @keyframes springPlusIn{to{opacity:1;transform:none;}}
-@media(max-width:820px){
-  #spring-snapshot .spring-shell{width:92vw;height:88vh;}
-  #spring-snapshot .spring-brain-stage{width:92vw;height:66vh;}
-  #spring-snapshot .spring-brain-frame,
-  #spring-snapshot .spring-brain-glow{width:min(86vw,560px);}
-  #spring-snapshot .spring-total{font-size:clamp(7rem,24vw,11rem);}
-  #spring-snapshot .spring-purpose{font-size:.95rem;}
+@media(max-width:980px){
+  #spring-snapshot{padding:5.8rem 2.2rem 3.2rem!important;}
+  #spring-snapshot .spring-shell{gap:1.7rem;}
+  #spring-snapshot .spring-layout{grid-template-columns:1fr;grid-template-rows:1fr auto;gap:1.5rem;}
+  #spring-snapshot .spring-emblem-stage{width:min(84vw,620px);}
+  #spring-snapshot .spring-impact{text-align:center;}
+  #spring-snapshot .spring-total{justify-content:center;font-size:clamp(6.5rem,20vw,10rem);}
 }
