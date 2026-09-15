@@ -28,6 +28,7 @@
     line-height:1.04;
     letter-spacing:-.025em;
     color:var(--charcoal);
+    white-space:nowrap;
   }
   #s3 .s3-intro{
     max-width:720px;
@@ -81,12 +82,15 @@
     top:35%;
     z-index:3;
   }
+  #s3 .s3-pillars-heading{
+    margin:clamp(1.15rem,1.8vw,1.65rem) 0 .8rem;
+  }
   #s3 .pillars{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:clamp(1.4rem,2.6vw,2.4rem);
     width:min(100%,1180px);
-    margin-top:clamp(1.45rem,2.2vw,2rem);
+    margin-top:0;
   }
   #s3 .pillar{
     position:relative;
