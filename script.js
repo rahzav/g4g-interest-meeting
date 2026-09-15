@@ -231,7 +231,8 @@
 
     function render(progress){
       var eased = 1 - Math.pow(1 - progress,4);
-      el.textContent = Math.round(target * eased);
+      var shown = progress >= 1 ? target : Math.min(target - 1,Math.floor(target * eased));
+      el.textContent = shown;
       emblem.style.setProperty('--emblem-fill-top',(100 - eased * 100).toFixed(2) + '%');
     }
 
