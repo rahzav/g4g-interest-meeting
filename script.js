@@ -58,6 +58,18 @@
       shape-rendering:geometricPrecision;
       filter:drop-shadow(0 0 8px rgba(200,16,46,.18));
     }
+    #s2 .chip{
+      flex-basis:340px!important;
+      max-width:360px!important;
+    }
+    #s2 .chip .chip-num{
+      font-size:clamp(2.55rem,3.45vw,3.4rem)!important;
+    }
+    #s2 .chip .chip-label{
+      max-width:360px!important;
+      font-size:clamp(1.02rem,1.12vw,1.18rem)!important;
+      line-height:1.42!important;
+    }
     #s2 .cost-rise-value-text{
       font-family:var(--serif);
       font-size:clamp(42px,4.35vw,66px);
@@ -66,20 +78,12 @@
       fill:var(--white);
       font-variant-numeric:tabular-nums;
     }
-    #s2 .cost-rise-caption{
-      position:absolute;
-      left:9.1%;
-      bottom:0;
-      width:clamp(220px,17vw,300px);
-      transform:translateX(-50%);
+    #s2 .cost-rise-caption-text{
       font-family:var(--sans);
-      font-size:clamp(17px,1.18vw,21px);
-      font-weight:600;
-      line-height:1.3;
+      font-size:19px;
+      font-weight:500;
       letter-spacing:.005em;
-      color:#aaa7a1;
-      text-align:center;
-      white-space:nowrap;
+      fill:#aaa7a1;
       pointer-events:auto;
       user-select:text;
       cursor:text;
@@ -147,8 +151,8 @@
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
           '</g>' +
+          '<text class="cost-rise-caption-text" x="58" y="392" text-anchor="middle">estimated total cost of treatment</text>' +
         '</svg>' +
-        '<div class="cost-rise-caption">estimated total cost of treatment</div>' +
       '</div>';
     s2.appendChild(costRise);
   }
