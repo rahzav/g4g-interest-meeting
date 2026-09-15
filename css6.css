@@ -1,7 +1,7 @@
 /* ================= SLIDE 6 : FALL SEM PLANS & PROJECTS ================= */
 #s6{
   overflow:hidden;
-  padding:clamp(4.8rem,7.3vh,6.9rem) clamp(4.5rem,7vw,7.5rem) clamp(4rem,6vh,5.6rem);
+  padding:clamp(6rem,9vh,8rem) clamp(4.5rem,7vw,7.5rem) clamp(3.5rem,5vh,5rem);
   background:
     radial-gradient(circle at 77% 43%,rgba(200,16,46,.15),transparent 34%),
     linear-gradient(135deg,#08090a 0%,#0d0e10 56%,#090a0b 100%)!important;
@@ -25,8 +25,12 @@
   max-width:none;
   margin:0;
   color:var(--white);
-  white-space:nowrap;
+  font-size:clamp(3.25rem,5.15vw,5.35rem);
+  line-height:.9;
+  letter-spacing:-.025em;
 }
+#s6 .fall-plans-title span{display:block;}
+#s6 .fall-plans-title span + span{margin-top:.16em;}
 
 #s6 .fall-plans-list{
   grid-column:1;
@@ -167,7 +171,7 @@
 @media(max-width:780px){
   #s6 .fall-plans-shell{display:block;width:92vw;}
   #s6 .fall-collage{position:relative;width:88vw;height:560px;margin:2.5rem auto 1rem;}
-  #s6 .fall-plans-title{white-space:normal;}
+  #s6 .fall-plans-title{font-size:clamp(3rem,13vw,4.8rem);}
 }
 @media(prefers-reduced-motion:reduce){
   #s6 .fall-plans-title,#s6 .fall-plan,#s6 .fall-collage{opacity:1;transform:none;animation:none!important;}
