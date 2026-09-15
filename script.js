@@ -21,7 +21,7 @@
     #s2 .cost-rise{
       position:absolute;
       right:clamp(3.8rem,5vw,6rem);
-      top:52%;
+      top:calc(52% + 48px);
       width:min(39vw,650px);
       transform:translateY(-42%);
       z-index:3;
@@ -132,7 +132,7 @@
           '<g class="cost-rise-value-wrap" opacity="0">' +
             '<text class="cost-rise-value-text" x="-18" y="-24" text-anchor="end">$0k</text>' +
           '</g>' +
-          '<text class="cost-rise-caption-text" x="58" y="439" text-anchor="middle">estimated total cost of treatment</text>' +
+          '<text class="cost-rise-caption-text" x="58" y="392" text-anchor="middle">estimated total cost of treatment</text>' +
         '</svg>' +
       '</div>';
     s2.appendChild(costRise);
