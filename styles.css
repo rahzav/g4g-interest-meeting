@@ -1369,22 +1369,14 @@
 }
 
 
-/* Fullscreen alignment corrections for Slide 4 and the donation reveal. */
-#spring-snapshot {
-  padding: 0 !important;
-}
-#spring-snapshot .spring-shell {
-  width: min(1940px, 96vw);
-  height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-}
-#spring-snapshot .spring-donation {
-  left: 50%;
-  top: 50%;
-}
-
+/* Fullscreen alignment corrections for Slide 4 and the donation reveal.
+   Keep the Spring Stats layout untouched; center only the overlay against the viewport. */
 @media (min-width: 1200px) {
+  #spring-snapshot .spring-donation {
+    left: calc(50vw - clamp(2rem, 6vw, 6rem));
+    top: 50%;
+  }
+
   #s4 .s4-pillars:has(.s4-pillar[data-pillar="0"].is-center) .s4-pillar[data-pillar="2"],
   #s4 .s4-pillars:has(.s4-pillar[data-pillar="1"].is-center) .s4-pillar[data-pillar="0"],
   #s4 .s4-pillars:has(.s4-pillar[data-pillar="2"].is-center) .s4-pillar[data-pillar="1"] {
