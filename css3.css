@@ -3,7 +3,7 @@
     justify-content:flex-start;
     align-items:center;
     overflow:hidden;
-    padding:clamp(5.4rem,7.4vh,6.8rem) clamp(3.4rem,6vw,7rem) clamp(3.8rem,5.8vh,5.2rem);
+    padding:clamp(6.2rem,8.8vh,7.6rem) clamp(3.4rem,6vw,7rem) clamp(3.8rem,5.8vh,5.2rem);
     background:
       radial-gradient(circle at 7% 92%,rgba(200,16,46,.065),transparent 29%),
       linear-gradient(180deg,#f4f2ef 0%,#efede9 100%);
