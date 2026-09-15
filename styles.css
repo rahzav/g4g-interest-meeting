@@ -1083,3 +1083,140 @@
   }
   .spring-raised { margin-left: 0; }
 }
+
+
+/* Slide 5 donation reveal. */
+#spring-snapshot .spring-header,
+#spring-snapshot .spring-layout {
+  transition: opacity 620ms ease, transform 720ms cubic-bezier(.16,1,.3,1), filter 620ms ease;
+}
+
+#spring-snapshot.donation-on .spring-header,
+#spring-snapshot.donation-on .spring-layout {
+  opacity: 0;
+  transform: translateY(-34px);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.spring-donation {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  top: 50%;
+  width: min(92vw, 760px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%,-43%) scale(.88);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 520ms ease 220ms,
+    transform 900ms cubic-bezier(.16,1,.3,1) 180ms,
+    visibility 0s linear 760ms;
+}
+
+#spring-snapshot.donation-on .spring-donation {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%,-50%) scale(1);
+  pointer-events: auto;
+  transition-delay: 260ms, 220ms, 0s;
+}
+
+.spring-donation-label {
+  margin-bottom: clamp(1rem, 1.8vh, 1.5rem);
+  color: var(--spring-red);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+
+.spring-donation-card {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(.75rem, 1vw, 1rem);
+  background: #fff;
+  box-shadow: 0 34px 80px rgba(42,30,28,.20);
+}
+
+.spring-donation-card::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 20px -20px -20px 20px;
+  background: var(--spring-red);
+  opacity: .96;
+  transform: translate(18px,18px);
+  transition: transform 900ms cubic-bezier(.16,1,.3,1) 400ms;
+}
+
+#spring-snapshot.donation-on .spring-donation-card::before {
+  transform: translate(0,0);
+}
+
+.spring-donation-card img {
+  display: block;
+  width: min(34vw, 440px);
+  max-height: 61vh;
+  height: auto;
+  object-fit: contain;
+}
+
+.spring-donation-hint {
+  margin-top: clamp(1.5rem, 2.4vh, 2rem);
+  color: var(--spring-muted);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.18vw, 1.28rem);
+  font-weight: 500;
+}
+
+/* Fullscreen readability pass across the deck. */
+@media (min-width: 1500px) and (min-height: 800px) {
+  html { font-size: 118.75%; }
+
+  #s1 .cover-grid { width: min(1500px, 96vw); }
+  #s1 .emblem-stage { width: min(40vw, 610px); }
+
+  #s2 h2.display::after { max-width: 1080px; }
+  #s2 .chip-row { width: min(35vw, 560px); }
+
+  #s3 .s3-org-shell { width: min(94vw, 1820px); }
+  #s3 .s3-scope-item h3,
+  #s3 .s3-scope-item p { max-width: 760px; }
+
+  #s4 .s4-pillars { width: min(94vw, 1320px)!important; }
+  #s4 .s4-pillar,
+  #s4 .s4-pillar.is-center {
+    width: clamp(340px, 30vw, 470px)!important;
+    height: clamp(340px, 30vw, 470px)!important;
+  }
+
+  .timeline { max-width: 1120px; }
+  .t-node .t-title { min-width: 340px; }
+
+  .committee-grid { max-width: 1500px; }
+  .committee-card { height: clamp(280px, 35vh, 360px); }
+
+  .track-grid { max-width: 1240px; }
+
+  #s10 .close-grid {
+    width: min(1500px, 92vw);
+    margin: 0 auto;
+  }
+  #s10 .qr-frame img,
+  #s10 .qr-frame table {
+    width: 185px;
+    height: 185px;
+  }
+}
+
+@media (max-width: 760px) {
+  .spring-donation { width: 90vw; }
+  .spring-donation-card img { width: min(68vw, 340px); max-height: 58vh; }
+  .spring-donation-hint { text-align: center; }
+}
