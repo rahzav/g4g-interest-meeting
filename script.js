@@ -20,7 +20,7 @@
 
     #s2 .cost-rise{
       position:absolute;
-      right:clamp(3.8rem,5vw,6rem);
+      right:clamp(5rem,6.5vw,8rem);
       top:calc(52% + 48px);
       width:min(39vw,650px);
       transform:translateY(-42%);
@@ -71,7 +71,7 @@
     }
 
     @media (max-width:1100px){
-      #s2 .cost-rise{right:3.5rem;width:min(38vw,550px);}
+      #s2 .cost-rise{right:4.5rem;width:min(38vw,550px);}
     }
     @media (max-width:900px){
       #s2{overflow-y:auto!important;}
