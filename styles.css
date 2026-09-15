@@ -486,12 +486,14 @@
 }
 #s4 .s4-tagline{
   display:block!important;
-  width:0;
+  width:min(88vw,61ch)!important;
   max-width:88vw!important;
+  min-height:1.4em!important;
   margin:clamp(1rem,2.2vh,1.45rem) auto 0!important;
-  overflow:hidden!important;
+  overflow:visible!important;
   white-space:nowrap!important;
-  border-right:2px solid rgba(246,245,242,.72)!important;
+  border:0!important;
+  text-align:center!important;
   font-family:var(--serif)!important;
   font-size:clamp(1rem,1.7vw,1.45rem)!important;
   font-weight:400!important;
@@ -509,7 +511,17 @@
   animation:s4CleanFade 850ms cubic-bezier(.16,1,.3,1) 120ms forwards!important;
 }
 #s4.active:not(.pillars-on) .s4-tagline{
-  animation:s4CleanType 2600ms steps(55,end) 700ms forwards,s4CleanCaret 650ms step-end 700ms 4 forwards!important;
+  animation:none!important;
+}
+#s4 .s4-tagline.is-typing::after{
+  content:''!important;
+  display:inline-block!important;
+  width:2px!important;
+  height:1.08em!important;
+  margin-left:.14em!important;
+  background:rgba(246,245,242,.72)!important;
+  vertical-align:-.12em!important;
+  animation:s4JsCursorBlink 650ms step-end infinite!important;
 }
 #s4.pillars-on .s4-intro{
   opacity:1!important;
@@ -575,7 +587,7 @@
 #s4 .s4-pillars:has(.s4-pillar[data-pillar="2"].is-center) .s4-pillar[data-pillar="0"]{--s4-x:clamp(255px,25vw,350px)!important;--s4-scale:.62!important;}
 @keyframes s4CleanFade{to{opacity:1;transform:none;filter:none;}}
 @keyframes s4CleanType{from{width:0;}to{width:min(88vw,61ch);}}
-@keyframes s4CleanCaret{0%,49%{border-right-color:rgba(246,245,242,.72);}50%,100%{border-right-color:transparent;}}
+@keyframes s4CleanCaret{0%,49%{border-right-color:rgba(246,245,242,.72);}50%,100%{border-right-color:transparent;}}\n@keyframes s4JsCursorBlink{50%{opacity:0;}}
 @media(max-width:700px){
   #s4.pillars-on .s4-intro{transform:translateY(calc(-50vh + 4.3rem))!important;}
   #s4.pillars-on .s4-wordmark{font-size:clamp(2rem,9vw,3rem)!important;}
