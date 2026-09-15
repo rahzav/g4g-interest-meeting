@@ -155,6 +155,8 @@
   var s4TypeRun = 0;
   var s4ResetTimer = null;
   var pillarTransitioning = false;
+  var springDonationOn = false;
+  var springDonationTransitioning = false;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach(function(s, i){
@@ -198,6 +200,12 @@
       }
       pillarStep = -1;
     }
+    if(current === 4 && i !== 4){
+      setSpringDonation(false, true);
+    }
+    if(i === 4){
+      setSpringDonation(false, true);
+    }
     current = i;
     deck.style.transform = 'translateY(-' + (i*100) + 'vh)';
     slides.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
@@ -223,6 +231,21 @@
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === slides.length - 1;
   }
+  function setSpringDonation(show, instant){
+    var slide = document.getElementById('spring-snapshot');
+    var reveal = slide && slide.querySelector('.spring-donation');
+    if(!slide || !reveal) return;
+    springDonationOn = show;
+    springDonationTransitioning = !instant;
+    slide.classList.toggle('donation-on', show);
+    reveal.setAttribute('aria-hidden', show ? 'false' : 'true');
+    if(instant){
+      springDonationTransitioning = false;
+    }else{
+      setTimeout(function(){ springDonationTransitioning = false; }, 920);
+    }
+  }
+
   function runSpringTotal(){
     var el = document.querySelector('#spring-snapshot [data-spring-total]');
     var emblem = document.querySelector('#spring-snapshot .spring-emblem-stage');
@@ -351,6 +374,10 @@
   }
 
   function next(){
+    if(current === 4){
+      if(springDonationTransitioning) return;
+      if(!springDonationOn){ setSpringDonation(true, false); return; }
+    }
     if(current === 3){
       if(pillarTransitioning) return;
       if(pillarStep < 0){ updatePillarCarousel(0); return; }
@@ -359,6 +386,11 @@
     goTo(current+1);
   }
   function prev(){
+    if(current === 4 && springDonationOn){
+      if(springDonationTransitioning) return;
+      setSpringDonation(false, false);
+      return;
+    }
     if(current === 3 && pillarStep >= 0){
       if(pillarTransitioning) return;
       if(pillarStep > 0){ updatePillarCarousel(pillarStep - 1); return; }
