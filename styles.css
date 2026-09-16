@@ -935,7 +935,7 @@
 .spring-title {
   margin: 0;
   color: var(--spring-ink);
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(4.7rem, 7.9vw, 8.7rem);
   font-weight: 650;
   line-height: .88;
