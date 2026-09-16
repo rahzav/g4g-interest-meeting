@@ -368,7 +368,7 @@
     var stage = word && word.closest('.leadership-word-stage');
     if(!word || !stage) return;
 
-    var words = ['SUPPORTERS','LEADERS','THINKERS','ADVOCATES','RESEARCHERS','BUILDERS','YOU'];
+    var words = ['SUPPORTERS','LEADERS','THINKERS','ADVOCATES','RESEARCHERS','BUILDERS','YOU.'];
     var finalIndex = words.length - 1;
     var runId = ++leadershipRun;
     var index = 0;
