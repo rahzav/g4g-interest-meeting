@@ -230,3 +230,195 @@
 @media(prefers-reduced-motion:reduce){
   #s4 .s4-wordmark,#s4 .s4-tagline{filter:none!important;}
 }
+
+/* ================= SLIDE 10 : COMMITTEE LEADERSHIP APPLICATIONS ================= */
+#s10{
+  padding:clamp(4.8rem,7.5vh,7rem) clamp(4.5rem,7vw,8rem)!important;
+  background:
+    radial-gradient(circle at 78% 48%,rgba(200,16,46,.14),transparent 27%),
+    radial-gradient(circle at 22% 95%,rgba(200,16,46,.07),transparent 31%),
+    linear-gradient(135deg,#070809 0%,#0c0d0f 58%,#090a0b 100%)!important;
+}
+
+#s10 .leadership-close{
+  width:min(91vw,1720px);
+  margin:auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(340px,.65fr);
+  align-items:center;
+  gap:clamp(4rem,7vw,8rem);
+}
+
+#s10 .leadership-copy{
+  min-width:0;
+}
+
+#s10 .leadership-kicker{
+  margin-bottom:clamp(1.4rem,2.6vh,2.2rem);
+  color:var(--scarlet);
+  font-size:clamp(.9rem,1.05vw,1.15rem);
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:0;
+  transform:translateY(14px);
+}
+
+#s10 .leadership-headline{
+  margin:0;
+  color:var(--white);
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(5rem,8.6vw,9.5rem);
+  font-weight:700;
+  line-height:.83;
+  letter-spacing:-.055em;
+  opacity:0;
+  transform:translateY(28px);
+}
+
+#s10 .leadership-fixed,
+#s10 .leadership-word-stage{
+  display:block;
+}
+
+#s10 .leadership-word-stage{
+  width:100%;
+  min-height:1.03em;
+  overflow:hidden;
+  color:var(--scarlet);
+}
+
+#s10 .leadership-word{
+  display:block;
+  will-change:transform,opacity;
+  transform:translateY(0);
+  opacity:1;
+  transition:transform 360ms cubic-bezier(.7,0,.3,1),opacity 260ms ease;
+}
+
+#s10 .leadership-word.is-leaving{
+  transform:translateY(-105%);
+  opacity:0;
+}
+
+#s10 .leadership-word.is-entering{
+  transform:translateY(105%);
+  opacity:0;
+  transition:none;
+}
+
+#s10 .leadership-word-stage.is-final{
+  text-shadow:0 0 44px rgba(200,16,46,.34);
+}
+
+#s10 .leadership-meta{
+  width:min(100%,760px);
+  margin-top:clamp(2rem,4vh,3.6rem);
+  padding-top:clamp(1.2rem,2vh,1.8rem);
+  display:flex;
+  flex-wrap:wrap;
+  gap:clamp(.9rem,1.4vw,1.35rem) clamp(2rem,4vw,4.5rem);
+  border-top:1px solid rgba(255,255,255,.18);
+  opacity:0;
+  transform:translateY(16px);
+}
+
+#s10 .leadership-meta p{
+  margin:0;
+  color:#aaa7a1;
+  font-size:clamp(1.05rem,1.3vw,1.35rem);
+  line-height:1.35;
+}
+
+#s10 .leadership-meta strong{
+  display:block;
+  margin-top:.32rem;
+  color:var(--white);
+  font-size:clamp(1.35rem,1.8vw,1.85rem);
+  font-weight:650;
+}
+
+#s10 .leadership-qr-wrap{
+  justify-self:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(1rem,1.7vh,1.5rem);
+  opacity:0;
+  transform:translateY(26px) scale(.96);
+}
+
+#s10 .leadership-qr-frame{
+  padding:clamp(.8rem,1vw,1.1rem);
+  background:#fff;
+  border:1px solid rgba(255,255,255,.48);
+  box-shadow:0 30px 80px rgba(0,0,0,.42),0 0 46px rgba(255,255,255,.08);
+}
+
+#s10 .leadership-qr-frame img{
+  display:block;
+  width:clamp(300px,24vw,440px);
+  height:auto;
+  aspect-ratio:1;
+}
+
+#s10 .leadership-qr-caption{
+  color:#b7b3ad;
+  font-size:clamp(.9rem,1.05vw,1.1rem);
+  font-weight:650;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+#s10.active .leadership-kicker{
+  animation:riseIn 620ms cubic-bezier(.16,1,.3,1) 100ms forwards;
+}
+
+#s10.active .leadership-headline{
+  animation:riseIn 780ms cubic-bezier(.16,1,.3,1) 180ms forwards;
+}
+
+#s10.active .leadership-meta{
+  animation:riseIn 650ms cubic-bezier(.16,1,.3,1) 460ms forwards;
+}
+
+#s10.active .leadership-qr-wrap{
+  animation:s10QrIn 820ms cubic-bezier(.16,1,.3,1) 360ms forwards;
+}
+
+@keyframes s10QrIn{
+  to{opacity:1;transform:none;}
+}
+
+@media(max-width:900px){
+  #s10{
+    padding:4.8rem 2rem 3.8rem!important;
+  }
+  #s10 .leadership-close{
+    width:100%;
+    grid-template-columns:1fr;
+    gap:2rem;
+    text-align:center;
+  }
+  #s10 .leadership-headline{
+    font-size:clamp(4rem,14vw,7rem);
+  }
+  #s10 .leadership-meta{
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  #s10 .leadership-qr-frame img{
+    width:min(38vh,70vw,340px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #s10 .leadership-kicker,
+  #s10 .leadership-headline,
+  #s10 .leadership-meta,
+  #s10 .leadership-qr-wrap{
+    opacity:1!important;
+    transform:none!important;
+  }
+}
