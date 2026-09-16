@@ -236,6 +236,19 @@
       if(springEntering) springEntering.classList.remove('donation-exiting');
       setSpringDonation(false, true);
     }
+    if(current === 5 && i !== 5){
+      var fallLeaving = document.getElementById('s6');
+      if(fallLeaving){
+        fallLeaving.classList.add('is-exiting');
+        setTimeout(function(){
+          if(current !== 5) fallLeaving.classList.remove('is-exiting');
+        },950);
+      }
+    }
+    if(i === 5){
+      var fallEntering = document.getElementById('s6');
+      if(fallEntering) fallEntering.classList.remove('is-exiting');
+    }
     current = i;
     deck.style.transform = 'translateY(-' + (i*100) + 'vh)';
     slides.forEach(function(s, idx){ s.classList.toggle('active', idx === i); });
