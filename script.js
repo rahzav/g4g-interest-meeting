@@ -172,6 +172,7 @@
   var pillarTransitioning = false;
   var springDonationOn = false;
   var springDonationTransitioning = false;
+  var leadershipRun = 0;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   slides.forEach(function(s, i){
@@ -187,6 +188,9 @@
 
   function goTo(i){
     if(i < 0 || i >= slides.length || i === current) { updateButtons(); return; }
+    if(current === slides.length - 1 && i !== slides.length - 1){
+      leadershipRun++;
+    }
     if(current === 3 && i !== 3){
       var s4Leaving = document.getElementById('s4');
       if(s4Leaving){
@@ -251,6 +255,9 @@
     }
     if(i === 2){
       runGfgImpact();
+    }
+    if(i === slides.length - 1){
+      runLeadershipWords();
     }
   }
   function updateButtons(){
@@ -341,6 +348,54 @@
       }
       typeNext();
     },700);
+  }
+
+  function runLeadershipWords(){
+    var word = document.querySelector('#s10 [data-leadership-word]');
+    var stage = word && word.closest('.leadership-word-stage');
+    if(!word || !stage) return;
+
+    var words = ['LEADERS','THINKERS','ADVOCATES','CREATORS','RESEARCHERS','ORGANIZERS','BUILDERS','YOU'];
+    var finalIndex = words.length - 1;
+    var runId = ++leadershipRun;
+    var index = 0;
+
+    word.textContent = words[0];
+    word.classList.remove('is-leaving','is-entering');
+    stage.classList.remove('is-final');
+
+    if(reduced){
+      word.textContent = words[finalIndex];
+      stage.classList.add('is-final');
+      return;
+    }
+
+    function advance(){
+      if(runId !== leadershipRun || current !== slides.length - 1) return;
+      word.classList.add('is-leaving');
+
+      setTimeout(function(){
+        if(runId !== leadershipRun || current !== slides.length - 1) return;
+        index++;
+        word.textContent = words[index];
+        word.classList.add('is-entering');
+        word.classList.remove('is-leaving');
+
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            if(runId === leadershipRun) word.classList.remove('is-entering');
+          });
+        });
+
+        if(index < finalIndex){
+          setTimeout(advance,980);
+        }else{
+          stage.classList.add('is-final');
+        }
+      },340);
+    }
+
+    setTimeout(advance,1100);
   }
 
   function setPillarCenter(items, center){
