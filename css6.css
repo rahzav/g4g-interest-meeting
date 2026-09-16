@@ -30,6 +30,7 @@
   max-width:none;
   margin:0;
   color:var(--white);
+  font-family:Georgia,'Times New Roman',serif;
   font-size:clamp(3.25rem,5.15vw,5.35rem);
   line-height:.9;
   letter-spacing:-.025em;
