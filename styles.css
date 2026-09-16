@@ -1391,16 +1391,3 @@
     --s4-x: 410px !important;
   }
 }
-
-/* Use the deck's bold Fraunces serif treatment across all slide titles. */
-#s1 .kicker-line::after,
-#s2 .eyebrow::after,
-h1.display,
-h2.display,
-#s4 .s4-wordmark,
-.spring-title,
-#s6 .fall-plans-title,
-#s6 .fall-plans-title .fall-title-projects,
-.spring-donation-label {
-  font-family: var(--serif) !important;
-}
