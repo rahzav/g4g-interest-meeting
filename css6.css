@@ -71,6 +71,11 @@
   opacity:1;
   transition-delay:420ms;
 }
+#s6.is-exiting .fall-plans-list::before{
+  opacity:0!important;
+  transition:opacity 480ms ease!important;
+  transition-delay:0ms!important;
+}
 #s6 .fall-plan{
   display:grid;
   grid-template-columns:clamp(3.2rem,4.2vw,4.2rem) 1fr;
